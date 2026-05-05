@@ -2562,17 +2562,17 @@ sidebar_intro()
 
 pages = {
     "Pitch Website": [
-        st.Page(page_home, title="首頁與自我檢測", default=True),
-        st.Page(page_problem, title="問題"),
-        st.Page(page_solution, title="解決方案"),
-        st.Page(page_product, title="產品與技術"),
-        st.Page(page_demo_lab, title="互動實驗室"),
-        st.Page(page_market, title="市場與商業模式"),
-        st.Page(page_financials, title="財務試算"),
-        st.Page(page_pilot_strategy, title="試點策略"),
-        st.Page(page_team_pitch, title="團隊與結語"),
-        st.Page(page_judge_room, title="評審問答"),
-        st.Page(page_deck, title="原始簡報與規則"),
+        st.Page(page_home, title="首頁與自我檢測", url_path="", default=True),
+        st.Page(page_problem, title="問題", url_path="problem"),
+        st.Page(page_solution, title="解決方案", url_path="solution"),
+        st.Page(page_product, title="產品與技術", url_path="product"),
+        st.Page(page_demo_lab, title="互動實驗室", url_path="demo-lab"),
+        st.Page(page_market, title="市場與商業模式", url_path="market"),
+        st.Page(page_financials, title="財務試算", url_path="financials"),
+        st.Page(page_pilot_strategy, title="試點策略", url_path="pilot"),
+        st.Page(page_team_pitch, title="團隊與結語", url_path="team"),
+        st.Page(page_judge_room, title="評審問答", url_path="judge-room"),
+        st.Page(page_deck, title="原始簡報與規則", url_path="deck"),
     ]
 }
 
