@@ -1216,6 +1216,20 @@ CUSTOM_CSS = """
         letter-spacing: 0.02em;
     }
 
+    div[data-testid="stSegmentedControl"] button {
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6px 18px 4px;
+    }
+
+    div[data-testid="stSegmentedControl"] button p {
+        margin: 0;
+        line-height: 1.15;
+        transform: translateY(2px);
+    }
+
     div[data-baseweb="input"] input,
     textarea,
     div[data-baseweb="select"] {
