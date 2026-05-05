@@ -2573,6 +2573,16 @@ pages = {
         st.Page(page_team_pitch, title="團隊與結語", url_path="team"),
         st.Page(page_judge_room, title="評審問答", url_path="judge-room"),
         st.Page(page_deck, title="原始簡報與規則", url_path="deck"),
+        st.Page(page_problem, title="問題", url_path="page_problem", visibility="hidden"),
+        st.Page(page_solution, title="解決方案", url_path="page_solution", visibility="hidden"),
+        st.Page(page_product, title="產品與技術", url_path="page_product", visibility="hidden"),
+        st.Page(page_demo_lab, title="互動實驗室", url_path="page_demo_lab", visibility="hidden"),
+        st.Page(page_market, title="市場與商業模式", url_path="page_market", visibility="hidden"),
+        st.Page(page_financials, title="財務試算", url_path="page_financials", visibility="hidden"),
+        st.Page(page_pilot_strategy, title="試點策略", url_path="page_pilot_strategy", visibility="hidden"),
+        st.Page(page_team_pitch, title="團隊與結語", url_path="page_team_pitch", visibility="hidden"),
+        st.Page(page_judge_room, title="評審問答", url_path="page_judge_room", visibility="hidden"),
+        st.Page(page_deck, title="原始簡報與規則", url_path="page_deck", visibility="hidden"),
     ]
 }
 
