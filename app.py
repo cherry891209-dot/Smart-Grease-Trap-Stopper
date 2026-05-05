@@ -11,6 +11,7 @@ MESSY_SINK_IMAGE = BASE_DIR / "assets" / "messy-sink.jpg"
 DRAIN_IMAGE = BASE_DIR / "assets" / "drain-closeup.jpg"
 APARTMENT_SINK_IMAGE = BASE_DIR / "assets" / "apartment-sink.jpg"
 TEAM_ILLUSTRATION_IMAGE = BASE_DIR / "assets" / "team-illustration.png"
+TEAM_MEMBERS_REDRAWN_IMAGE = BASE_DIR / "assets" / "team-members-redrawn.png"
 RULES_PDF = BASE_DIR / "612483020334563589_Startup World Cup Pitch Deck Outline_ 2025.pdf"
 PROPOSAL_PDF = BASE_DIR / "612513577919578249_Smart_Grease_Trap_Revolution_(4).pdf"
 
@@ -1314,7 +1315,7 @@ def render_motion_visual(kind: str, label: str) -> None:
 
 
 def render_anim_component(kind: str, label: str) -> None:
-    team_b64 = image_to_base64(TEAM_ILLUSTRATION_IMAGE)
+    team_b64 = image_to_base64(TEAM_MEMBERS_REDRAWN_IMAGE)
     titles = {
         "problem": "油脂阻塞形成路徑",
         "solution": "換上水槽塞後的油水分流",
