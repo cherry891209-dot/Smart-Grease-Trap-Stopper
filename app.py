@@ -10,6 +10,7 @@ RULES_IMAGE = BASE_DIR / "rules-cover.png"
 MESSY_SINK_IMAGE = BASE_DIR / "assets" / "messy-sink.jpg"
 DRAIN_IMAGE = BASE_DIR / "assets" / "drain-closeup.jpg"
 APARTMENT_SINK_IMAGE = BASE_DIR / "assets" / "apartment-sink.jpg"
+TEAM_ILLUSTRATION_IMAGE = BASE_DIR / "assets" / "team-illustration.png"
 RULES_PDF = BASE_DIR / "612483020334563589_Startup World Cup Pitch Deck Outline_ 2025.pdf"
 PROPOSAL_PDF = BASE_DIR / "612513577919578249_Smart_Grease_Trap_Revolution_(4).pdf"
 
@@ -1133,6 +1134,23 @@ CUSTOM_CSS = """
     .image-marquee,
     .photo-tile {
         border-radius: var(--radius);
+        box-shadow: var(--shadow-md);
+    }
+
+    .team-identity-card {
+        min-height: 100%;
+        justify-content: center;
+    }
+
+    .team-identity-card h3 {
+        min-height: auto;
+        font-size: 28px;
+        line-height: 1.25;
+    }
+
+    div[data-testid="stImage"] img {
+        border-radius: var(--radius);
+        border: 1px solid var(--line);
         box-shadow: var(--shadow-md);
     }
 
@@ -2457,7 +2475,60 @@ def page_team_pitch() -> None:
     render_css()
     section_label("Team")
     st.title("清大計財碩一團隊")
-    render_motion_visual("team", "廖怡絜、曾楷芸、邱芷凡：用財務邏輯與學生洞察做硬體產品。")
+
+    identity_options = {
+        "正式 Pitch": {
+            "tagline": "用財務邏輯與學生洞察做硬體產品。",
+            "focus": "適合放在比賽現場或對外提案，呈現專業、穩定、可信任的團隊形象。",
+            "badges": ["成本模型", "商業簡報", "產品驗證"],
+        },
+        "校園訪談": {
+            "tagline": "從清大周邊租屋現場找痛點。",
+            "focus": "強調我們真的理解外宿族日常，能把訪談、使用情境和通路假設連起來。",
+            "badges": ["外宿洞察", "使用者訪談", "開學季通路"],
+        },
+        "產品實驗": {
+            "tagline": "把水槽阻塞問題變成可測的產品假設。",
+            "focus": "適合說明打樣、適配率、清理手感與油脂攔截量，讓評審看到執行路線。",
+            "badges": ["MVP 打樣", "油脂攔截", "90 天試點"],
+        },
+        "財務分析": {
+            "tagline": "用計財背景守住定價、毛利與回購。",
+            "focus": "凸顯團隊能把 NT$150 低價硬體做成可持續商業模型，而不是只停在創意。",
+            "badges": ["單位經濟", "濾芯回購", "損益平衡"],
+        },
+    }
+    selected_identity = st.segmented_control(
+        "切換團隊形象",
+        list(identity_options.keys()),
+        default="正式 Pitch",
+        label_visibility="collapsed",
+    )
+    identity = identity_options[selected_identity]
+
+    left, right = st.columns([1.05, 1])
+    with left:
+        st.image(
+            TEAM_ILLUSTRATION_IMAGE,
+            caption="團隊形象插畫：廖怡絜、曾楷芸、邱芷凡",
+            use_container_width=True,
+        )
+    with right:
+        st.markdown(
+            f"""
+            <div class="card team-identity-card">
+                <div class="number">{selected_identity}</div>
+                <h3>{identity["tagline"]}</h3>
+                <p class="muted">{identity["focus"]}</p>
+                <div class="pill-row">
+                    {"".join(f'<span class="pill">{badge}</span>' for badge in identity["badges"])}
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    render_motion_visual("team", f"廖怡絜、曾楷芸、邱芷凡：{identity['tagline']}")
     st.markdown(
         """
         我們是清大計財碩一學生：廖怡絜、曾楷芸、邱芷凡。團隊把外宿生活的真實痛點，
