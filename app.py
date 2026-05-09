@@ -1702,16 +1702,16 @@ def render_signal_strip() -> None:
 
 def render_image_marquee() -> None:
     items = [
-        (BASE_DIR / "assets" / "marquee-01-apartment-sink.jpg", "Small rental sink: tight space, hard to renovate"),
-        (BASE_DIR / "assets" / "marquee-02-messy-window-sink.jpg", "After-dinner sink: dirty dishes and leftover soup"),
-        (BASE_DIR / "assets" / "marquee-03-drain-closeup.jpg", "Drain close-up: where grease buildup starts"),
-        (BASE_DIR / "assets" / "marquee-04-dark-dirty-sink.jpg", "Dim kitchen: real-life cleaning procrastination"),
-        (BASE_DIR / "assets" / "marquee-05-stainless-drain.jpg", "Metal drain: common rental sink hardware"),
-        (BASE_DIR / "assets" / "marquee-06-water-drain.jpg", "Water entering drain: grease travels with it"),
-        (BASE_DIR / "assets" / "marquee-07-running-faucet.jpg", "Running faucet: everyday dishwashing moment"),
-        (BASE_DIR / "assets" / "marquee-08-greasy-dishes.jpg", "Greasy cookware: the residue most likely to clog pipes"),
-        (BASE_DIR / "assets" / "marquee-09-person-cleaning.jpg", "Dishwashing: users do not want to touch grease"),
-        (BASE_DIR / "assets" / "marquee-10-soapy-sink.jpg", "Soapy sink: residue risk remains after cleaning"),
+        (BASE_DIR / "assets" / "marquee-handdrawn-02.png", "Small rental sink: tight space, hard to renovate"),
+        (BASE_DIR / "assets" / "marquee-handdrawn-05.png", "After-dinner sink: dirty dishes and leftover soup"),
+        (BASE_DIR / "assets" / "marquee-handdrawn-03.png", "Drain close-up: where grease buildup starts"),
+        (BASE_DIR / "assets" / "marquee-handdrawn-06.png", "Metal drain: common rental sink hardware"),
+        (BASE_DIR / "assets" / "marquee-handdrawn-09.png", "Water entering drain: grease travels with it"),
+        (BASE_DIR / "assets" / "marquee-handdrawn-10.png", "Running faucet: everyday dishwashing moment"),
+        (BASE_DIR / "assets" / "marquee-handdrawn-08.png", "Greasy cookware: the residue most likely to clog pipes"),
+        (BASE_DIR / "assets" / "marquee-handdrawn-07.png", "Dishwashing: users do not want to touch grease"),
+        (BASE_DIR / "assets" / "marquee-handdrawn-01.png", "Soapy sink: residue risk remains after cleaning"),
+        (BASE_DIR / "assets" / "marquee-handdrawn-04.png", "Messy sink: grease and leftovers collect quickly"),
     ]
     rendered = []
     for path, caption in items * 2:
