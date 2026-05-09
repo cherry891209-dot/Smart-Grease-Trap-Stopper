@@ -1398,8 +1398,8 @@ def render_motion_visual(kind: str, label: str) -> None:
 def render_team_photo_grid() -> None:
     members = [
         ("Yi-Chieh Liao", "CEO", "Company strategy and product vision", LIAO_IMAGE),
-        ("Kai-Yun Tseng", "CFO", "Financial planning and capital allocation", TSENG_IMAGE),
-        ("Chih-Fan Chiou", "CMO", "Market positioning and brand growth", CHIOU_IMAGE),
+        ("Kai Yun Zeng", "CFO", "Financial planning and capital allocation", TSENG_IMAGE),
+        ("CHIU, CHIH-FAN", "CMO", "Market positioning and brand growth", CHIOU_IMAGE),
     ]
     cards = "".join(
         f"""
@@ -1558,11 +1558,11 @@ def render_anim_component(kind: str, label: str) -> None:
             </div>
             <div class="member-card tseng">
               <div class="portrait tseng-photo"></div>
-              <strong>Kai-Yun Tseng</strong><span>CFO<br>Financial planning and capital allocation</span>
+              <strong>Kai Yun Zeng</strong><span>CFO<br>Financial planning and capital allocation</span>
             </div>
             <div class="member-card chiou">
               <div class="portrait chiou-photo"></div>
-              <strong>Chih-Fan Chiou</strong><span>CMO<br>Market positioning and brand growth</span>
+              <strong>CHIU, CHIH-FAN</strong><span>CMO<br>Market positioning and brand growth</span>
             </div>
           </div>
           <div class="team-output">Shared output: product vision + financial planning + market growth strategy</div>
@@ -2812,7 +2812,7 @@ def page_team_pitch() -> None:
     with left:
         st.image(
             TEAM_ILLUSTRATION_IMAGE,
-            caption="Team illustration: Yi-Chieh Liao, Kai-Yun Tseng, Chih-Fan Chiou",
+            caption="Team illustration: Yi-Chieh Liao, Kai Yun Zeng, CHIU, CHIH-FAN",
             use_container_width=True,
         )
     with right:
@@ -2833,7 +2833,7 @@ def page_team_pitch() -> None:
     render_motion_visual("team", "Core Team: CEO / CFO / CMO Roles")
     st.markdown(
         """
-        We are an NTHU finance team: Yi-Chieh Liao, Kai-Yun Tseng, and Chih-Fan Chiou. We turn the real pain of rental living into product design, cost models, and campus pilot strategy.
+        We are an NTHU finance team: Yi-Chieh Liao, Kai Yun Zeng, and CHIU, CHIH-FAN. We turn the real pain of rental living into product design, cost models, and campus pilot strategy.
         """
     )
 
@@ -2851,7 +2851,7 @@ def page_team_pitch() -> None:
     st.header("30-Second Closing Script")
     st.markdown(
         """
-        We are Clario Living, an NTHU student-founded team by Yi-Chieh Liao, Kai-Yun Tseng, and Chih-Fan Chiou. In rental life, clogged pipes and odor are not small problems; they affect a student’s room, budget, and dignity. Our low-cost, zero-power, easy-clean stopper turns expensive reactive repair into everyday prevention.
+        We are Clario Living, an NTHU student-founded team by Yi-Chieh Liao, Kai Yun Zeng, and CHIU, CHIH-FAN. In rental life, clogged pipes and odor are not small problems; they affect a student's room, budget, and dignity. Our low-cost, zero-power, easy-clean stopper turns expensive reactive repair into everyday prevention.
         """
     )
 
@@ -2862,14 +2862,14 @@ def page_team_pitch() -> None:
         "Turning Background Into Execution",
         [
             ("Yi-Chieh Liao", "CEO: Company strategy and product vision", "Leads supply-chain integration and production planning."),
-            ("Kai-Yun Tseng", "CFO: Financial planning and capital allocation", "Owns the 18-month break-even plan."),
-            ("Chih-Fan Chiou", "CMO: Market positioning and brand growth", "Leads B2B property partnerships and B2C brand growth through a painless-upgrade strategy."),
+            ("Kai Yun Zeng", "CFO: Financial planning and capital allocation", "Owns the 18-month break-even plan."),
+            ("CHIU, CHIH-FAN", "CMO: Market positioning and brand growth", "Leads B2B property partnerships and B2C brand growth through a painless-upgrade strategy."),
             ("Finance Background", "Uses data, cost, and risk thinking to manage a hardware pilot", "Keeps the project moving beyond an idea toward production and sales."),
         ],
     )
 
     st.subheader("15-Second Team Intro")
-    st.success("We are Yi-Chieh Liao, Kai-Yun Tseng, and Chih-Fan Chiou from NTHU finance. Rental living showed us the real sink-clogging problem, and our finance training helps us judge whether this product can survive through cost, margin, and pilot data.")
+    st.success("We are Yi-Chieh Liao, Kai Yun Zeng, and CHIU, CHIH-FAN from NTHU finance. Rental living showed us the real sink-clogging problem, and our finance training helps us judge whether this product can survive through cost, margin, and pilot data.")
 
 
 def page_deck() -> None:
