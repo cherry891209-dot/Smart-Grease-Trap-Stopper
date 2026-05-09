@@ -12,6 +12,10 @@ DRAIN_IMAGE = BASE_DIR / "assets" / "drain-closeup.jpg"
 APARTMENT_SINK_IMAGE = BASE_DIR / "assets" / "apartment-sink.jpg"
 TEAM_ILLUSTRATION_IMAGE = BASE_DIR / "assets" / "team-illustration.png"
 TEAM_MEMBERS_REDRAWN_IMAGE = BASE_DIR / "assets" / "team-members-redrawn.png"
+LIAO_IMAGE = BASE_DIR / "廖怡絜.JPG"
+TSENG_IMAGE = BASE_DIR / "曾楷芸.JPG"
+CHIOU_IMAGE = BASE_DIR / "邱芷凡.JPG"
+WORK_ASSIGNMENT_IMAGE = BASE_DIR / "IMG_1139.jpg"
 RULES_PDF = BASE_DIR / "612483020334563589_Startup World Cup Pitch Deck Outline_ 2025.pdf"
 PROPOSAL_PDF = BASE_DIR / "612513577919578249_Smart_Grease_Trap_Revolution_(4).pdf"
 
@@ -1298,6 +1302,11 @@ def image_to_base64(path: Path) -> str:
     return base64.b64encode(path.read_bytes()).decode("ascii")
 
 
+def image_data_uri(path: Path) -> str:
+    mime = "image/png" if path.suffix.lower() == ".png" else "image/jpeg"
+    return f"data:{mime};base64,{image_to_base64(path)}"
+
+
 def render_css() -> None:
     hero_b64 = image_to_base64(APARTMENT_SINK_IMAGE if APARTMENT_SINK_IMAGE.exists() else PROPOSAL_IMAGE)
     st.markdown(CUSTOM_CSS.replace("__HERO_PLACEHOLDER__", hero_b64), unsafe_allow_html=True)
@@ -1328,8 +1337,83 @@ def render_motion_visual(kind: str, label: str) -> None:
     render_anim_component(kind, label)
 
 
+def render_team_photo_grid() -> None:
+    members = [
+        ("廖怡絜", "CEO", "整體戰略與產品願景", LIAO_IMAGE),
+        ("曾楷芸", "CFO", "財務預測與資金調度", TSENG_IMAGE),
+        ("邱芷凡", "CMO", "市場定位與品牌拓展", CHIOU_IMAGE),
+    ]
+    cards = "".join(
+        f"""
+        <article class="team-photo-card">
+            <img src="{image_data_uri(path)}" alt="{name} 團隊照片">
+            <div>
+                <span>{role}</span>
+                <strong>{name}</strong>
+                <p>{focus}</p>
+            </div>
+        </article>
+        """
+        for name, role, focus, path in members
+    )
+    st.markdown(
+        f"""
+        <style>
+          .team-photo-grid {{
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin: 0 0 18px;
+          }}
+          .team-photo-card {{
+            background: white;
+            border: 1px solid #d9dfd6;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 14px 38px rgba(23, 33, 29, .08);
+          }}
+          .team-photo-card img {{
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            display: block;
+            background: #f8f5ee;
+          }}
+          .team-photo-card div {{
+            padding: 15px 16px 17px;
+          }}
+          .team-photo-card span {{
+            color: #c7653f;
+            font-size: 13px;
+            font-weight: 900;
+          }}
+          .team-photo-card strong {{
+            display: block;
+            margin-top: 4px;
+            font-size: 22px;
+            line-height: 1.15;
+          }}
+          .team-photo-card p {{
+            margin: 7px 0 0;
+            color: #59645f;
+            font-weight: 750;
+            line-height: 1.45;
+          }}
+          @media (max-width: 760px) {{
+            .team-photo-grid {{ grid-template-columns: 1fr; }}
+          }}
+        </style>
+        <div class="team-photo-grid">{cards}</div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def render_anim_component(kind: str, label: str) -> None:
     team_b64 = image_to_base64(TEAM_MEMBERS_REDRAWN_IMAGE)
+    liao_b64 = image_to_base64(LIAO_IMAGE)
+    tseng_b64 = image_to_base64(TSENG_IMAGE)
+    chiou_b64 = image_to_base64(CHIOU_IMAGE)
     titles = {
         "problem": "油脂阻塞形成路徑",
         "solution": "換上水槽塞後的油水分流",
@@ -1412,18 +1496,18 @@ def render_anim_component(kind: str, label: str) -> None:
           <div class="team-board">
             <div class="member-card liao">
               <div class="portrait liao-photo"></div>
-              <strong>廖怡絜</strong><span>成本、損益、定價</span>
+              <strong>廖怡絜</strong><span>CEO<br>整體戰略與產品願景</span>
             </div>
             <div class="member-card tseng">
               <div class="portrait tseng-photo"></div>
-              <strong>曾楷芸</strong><span>市場、通路、訪談</span>
+              <strong>曾楷芸</strong><span>CFO<br>財務預測與資金調度</span>
             </div>
             <div class="member-card chiou">
               <div class="portrait chiou-photo"></div>
-              <strong>邱芷凡</strong><span>產品、規格、試點</span>
+              <strong>邱芷凡</strong><span>CMO<br>市場定位與品牌拓展</span>
             </div>
           </div>
-          <div class="team-output">共同產出：產品設計 + 財務模型 + 校園試點策略</div>
+          <div class="team-output">共同產出：產品願景 + 財務規劃 + 市場拓展策略</div>
           <div class="team-line l1"></div><div class="team-line l2"></div><div class="team-line l3"></div>
         """,
         "deck": """
@@ -1453,7 +1537,7 @@ def render_anim_component(kind: str, label: str) -> None:
       .money-flow{position:absolute;left:8%;right:8%;top:96px;display:grid;grid-template-columns:1fr 74px 1fr 74px 1fr;align-items:center;gap:12px}.money-box{height:112px;border-radius:8px;background:white;border:1px solid #d9dfd6;display:grid;place-items:center;text-align:center;box-shadow:0 16px 34px rgba(23,33,29,.12);animation:float 3.2s infinite}.money-box strong{font-size:19px}.money-box span{color:#c7653f;font-weight:900}.flow-arrow{height:8px;border-radius:999px;background:#c7653f;position:relative;animation:arrowPush 2.2s infinite}.flow-arrow:after{content:"";position:absolute;right:-12px;top:-8px;border-left:18px solid #c7653f;border-top:12px solid transparent;border-bottom:12px solid transparent}.a2{animation-delay:.5s}.sub-flow{position:absolute;left:23%;right:23%;bottom:44px;display:grid;grid-template-columns:1fr 80px 1fr;align-items:center;gap:12px}.sub-card{height:74px;border-radius:8px;background:#17211d;color:white;display:grid;place-items:center;text-align:center;font-weight:900;box-shadow:0 16px 34px rgba(23,33,29,.15)}.sub-card span{color:#f0b45c}.sub-arrow{height:6px;border-radius:999px;background:#78a083;position:relative}.sub-arrow:after{content:"";position:absolute;right:-10px;top:-7px;border-left:16px solid #78a083;border-top:10px solid transparent;border-bottom:10px solid transparent}.finance-bars{position:absolute;right:8%;bottom:42px;display:flex;align-items:end;gap:8px;height:78px;opacity:.32}.finance-bars div{width:28px;border-radius:7px 7px 0 0;background:#496b58;animation:barGrow 2s infinite alternate}.finance-bars div:nth-child(1){height:28px}.finance-bars div:nth-child(2){height:44px;animation-delay:.2s}.finance-bars div:nth-child(3){height:62px;animation-delay:.4s}.finance-bars div:nth-child(4){height:78px;animation-delay:.6s}
       .calendar-grid{position:absolute;inset:44px 9% 50px;border-radius:8px;background:linear-gradient(90deg,rgba(73,107,88,.08) 1px,transparent 1px);background-size:12.5% 100%;border:1px solid #d9dfd6}.pilot-road{position:absolute;left:12%;right:12%;top:51%;height:8px;border-radius:999px;background:linear-gradient(90deg,#496b58,#78a083,#f0b45c,#c7653f)}.pilot-runner{position:absolute;top:calc(51% - 14px);left:12%;width:34px;height:34px;border-radius:50%;background:#c7653f;box-shadow:0 0 0 10px rgba(199,101,63,.16);animation:runner 6s infinite}.milestone{position:absolute;width:120px;height:78px;border-radius:8px;background:white;border:1px solid #d9dfd6;display:grid;place-items:center;text-align:center;box-shadow:0 14px 30px rgba(23,33,29,.12);animation:float 3.2s infinite}.milestone strong{color:#c7653f}.milestone span{font-weight:900}.pilot .m1{left:8%;top:82px}.pilot .m2{left:31%;bottom:86px;animation-delay:.4s}.pilot .m3{left:55%;top:82px;animation-delay:.8s}.pilot .m4{right:7%;bottom:86px;animation-delay:1.2s}.kpi{position:absolute;padding:9px 12px;border-radius:999px;background:#17211d;color:white;font-weight:900;animation:chip 3s infinite}.k1{left:22%;top:42px}.k2{left:49%;top:42px;animation-delay:.5s}.k3{right:18%;top:42px;animation-delay:1s}
       .judge-table{position:absolute;left:8%;top:72px;width:430px;display:grid;gap:10px}.judge-row{height:52px;border-radius:8px;background:white;border:1px solid #d9dfd6;display:flex;align-items:center;gap:14px;padding:0 16px;box-shadow:0 12px 24px rgba(23,33,29,.1);animation:float 3.2s infinite}.judge-row:nth-child(2){animation-delay:.25s}.judge-row:nth-child(3){animation-delay:.5s}.judge-row:nth-child(4){animation-delay:.75s}.judge-row strong{min-width:72px;color:#c7653f}.judge-row span{font-weight:850;color:#17211d}.judge-score{position:absolute;right:8%;top:72px;width:280px;height:236px}.score-axis{position:absolute;background:#d9dfd6}.score-axis.x{left:20px;right:20px;top:50%;height:4px}.score-axis.y{top:20px;bottom:20px;left:50%;width:4px}.score-card{position:absolute;width:82px;height:54px;border-radius:8px;background:#17211d;color:white;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1;font-weight:900;padding:0 2px;box-shadow:0 14px 30px rgba(23,33,29,.16)}.score-card.p{left:99px;top:0}.score-card.s{right:0;top:91px;background:#496b58}.score-card.b{left:99px;bottom:0;background:#c7653f}.score-card.e{left:0;top:91px;background:#f0b45c;color:#17211d}.score-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:92px;height:92px;border-radius:50%;background:white;border:8px solid #78a083;display:grid;place-items:center;text-align:center;font-weight:900;line-height:1.2;animation:pulse 2.6s infinite}
-      .team-board{position:absolute;left:5%;right:5%;top:72px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;z-index:4}.member-card{height:342px;border-radius:8px;background:white;border:1px solid #d9dfd6;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;gap:7px;padding:16px 14px 18px;box-shadow:0 16px 34px rgba(23,33,29,.12);animation:float 3.4s infinite}.member-card strong{font-size:24px;line-height:1.15;margin-top:6px}.member-card span{color:#c7653f;font-weight:900;font-size:16px;line-height:1.25;min-height:22px;display:flex;align-items:center;justify-content:center}.tseng{animation-delay:.35s}.chiou{animation-delay:.7s}.portrait{width:100%;max-width:220px;height:238px;border-radius:8px;background-image:url("data:image/png;base64,__TEAM_IMAGE__");background-size:660px auto;background-repeat:no-repeat;background-color:#f7f4ec;border:1px solid #d9dfd6;box-shadow:0 12px 24px rgba(23,33,29,.12);animation:portraitFloat 3.6s ease-in-out infinite}.liao-photo{background-position:0% 0%}.tseng-photo{background-position:50% 0%;animation-delay:.3s}.chiou-photo{background-position:100% 0%;animation-delay:.6s}.team-output{position:absolute;left:18%;right:18%;bottom:32px;height:58px;border-radius:8px;background:#17211d;color:white;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:900;font-size:18px;line-height:1.35;padding:0 18px;box-shadow:0 18px 38px rgba(23,33,29,.18);z-index:5}.team-line{position:absolute;height:4px;border-radius:999px;background:#f0b45c;transform-origin:center;z-index:2;opacity:.75}.team-line.l1{left:25%;top:428px;width:145px;transform:rotate(12deg)}.team-line.l2{left:45%;top:426px;width:140px}.team-line.l3{right:25%;top:428px;width:145px;transform:rotate(-12deg)}
+      .team-board{position:absolute;left:5%;right:5%;top:72px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;z-index:4}.member-card{height:342px;border-radius:8px;background:white;border:1px solid #d9dfd6;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;gap:7px;padding:16px 14px 18px;box-shadow:0 16px 34px rgba(23,33,29,.12);animation:float 3.4s infinite}.member-card strong{font-size:24px;line-height:1.15;margin-top:6px}.member-card span{color:#c7653f;font-weight:900;font-size:15px;line-height:1.3;min-height:42px;display:flex;align-items:center;justify-content:center}.tseng{animation-delay:.35s}.chiou{animation-delay:.7s}.portrait{width:100%;max-width:220px;height:222px;border-radius:8px;background-size:cover;background-position:center;background-repeat:no-repeat;background-color:#f7f4ec;border:1px solid #d9dfd6;box-shadow:0 12px 24px rgba(23,33,29,.12);animation:portraitFloat 3.6s ease-in-out infinite}.liao-photo{background-image:url("data:image/jpeg;base64,__LIAO_IMAGE__")}.tseng-photo{background-image:url("data:image/jpeg;base64,__TSENG_IMAGE__");animation-delay:.3s}.chiou-photo{background-image:url("data:image/jpeg;base64,__CHIOU_IMAGE__");animation-delay:.6s}.team-output{position:absolute;left:18%;right:18%;bottom:32px;height:58px;border-radius:8px;background:#17211d;color:white;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:900;font-size:18px;line-height:1.35;padding:0 18px;box-shadow:0 18px 38px rgba(23,33,29,.18);z-index:5}.team-line{position:absolute;height:4px;border-radius:999px;background:#f0b45c;transform-origin:center;z-index:2;opacity:.75}.team-line.l1{left:25%;top:428px;width:145px;transform:rotate(12deg)}.team-line.l2{left:45%;top:426px;width:140px}.team-line.l3{right:25%;top:428px;width:145px;transform:rotate(-12deg)}
       .deck-stack{position:absolute;left:10%;top:76px;width:300px;height:210px}.slide-card{position:absolute;width:136px;height:88px;border-radius:8px;background:white;border:1px solid #d9dfd6;display:grid;place-items:center;text-align:center;font-weight:900;box-shadow:0 14px 30px rgba(23,33,29,.12);animation:flipSlide 4s infinite}.deck .s1{left:0;top:0}.deck .s2{left:90px;top:36px;animation-delay:.35s}.deck .s3{left:178px;top:74px;animation-delay:.7s}.deck .s4{left:64px;top:132px;animation-delay:1.05s}.convert-arrow{position:absolute;left:44%;top:46%;width:118px;height:16px;border-radius:999px;background:#c7653f;animation:arrowPush 2.4s infinite}.convert-arrow:after{content:"";position:absolute;right:-18px;top:-12px;border-left:28px solid #c7653f;border-top:20px solid transparent;border-bottom:20px solid transparent}.browser-mock{position:absolute;right:10%;top:74px;width:292px;height:210px;border-radius:8px;background:#17211d;box-shadow:0 18px 42px rgba(23,33,29,.22);overflow:hidden}.browser-top{height:32px;background:#536a7c}.browser-hero{position:absolute;left:24px;right:24px;top:58px;height:62px;border-radius:8px;background:#78a083;animation:pulse 2.8s infinite}.browser-row{position:absolute;left:24px;right:24px;top:142px;height:14px;border-radius:999px;background:#f0b45c;animation:screenLine 2.8s infinite}.browser-row.short{top:172px;width:140px;background:#fff}.rule-badge{position:absolute;right:29%;bottom:66px;padding:11px 14px;border-radius:999px;background:#f0b45c;font-weight:900;animation:chip 3s infinite}.rule-badge.b2{right:11%;bottom:48px;background:white;border:1px solid #d9dfd6;animation-delay:.6s}
       @keyframes oilTravel{0%{transform:translateX(0);opacity:.2}55%{opacity:1}100%{transform:translateX(46vw);opacity:0}} @keyframes sticky{50%{transform:scaleX(1.28);filter:saturate(1.3)}} @keyframes steam{0%{transform:translateY(18px);opacity:0}50%{opacity:1}100%{transform:translateY(-42px);opacity:0}} @keyframes float{50%{transform:translateY(-13px)}} @keyframes portraitFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-5px) scale(1.02)}} @keyframes removeOld{50%{transform:translate(-24px,-18px) rotate(-15deg);opacity:.45}} @keyframes insertNew{50%{transform:translate(0,122px) scale(.92)}} @keyframes arrowPush{50%{transform:translateX(18px);opacity:.72}} @keyframes spin{to{transform:rotate(360deg)}} @keyframes tankOil{50%{height:72px}} @keyframes tankWater{50%{height:38px}} @keyframes waterPulse{50%{transform:scaleX(1.18);opacity:.72}} @keyframes dropArc{0%{transform:translate(-44px,-44px);opacity:0}50%{opacity:1}100%{transform:translate(108px,96px);opacity:0}} @keyframes chip{50%{transform:translateY(-10px);filter:saturate(1.22)}} @keyframes pulse{50%{transform:scale(1.05)}} @keyframes coreBeat{50%{box-shadow:inset 0 0 0 20px #78a083;transform:scale(1.06)}} @keyframes gasket{50%{transform:scale(.9);border-color:#78a083}} @keyframes filterSlide{50%{transform:translateX(-20px)}} @keyframes pathPulse{50%{opacity:.45;filter:saturate(1.4)}} @keyframes packetRun{50%{transform:translate(160px,70px) rotate(12deg)}} @keyframes costOut{50%{transform:translateX(48px);opacity:.55}} @keyframes meter{50%{height:78%}} @keyframes coinFall{50%{transform:translateY(118px) rotate(180deg)}} @keyframes barGrow{from{transform:scaleY(.68)}to{transform:scaleY(1)}} @keyframes runner{0%{left:12%}100%{left:84%}} @keyframes screenLine{50%{width:82px;opacity:.55}} @keyframes radar{50%{clip-path:polygon(50% 8%,84% 18%,88% 76%,32% 84%,12% 42%);transform:translate(-50%,-50%) rotate(5deg)}} @keyframes sweep{to{transform:rotate(360deg)}} @keyframes flipSlide{50%{transform:translateY(-10px) rotateX(18deg)}}
     </style>
@@ -1464,6 +1548,9 @@ def render_anim_component(kind: str, label: str) -> None:
         .replace("__TITLE__", titles[kind])
         .replace("__SCENE__", scenes[kind])
         .replace("__TEAM_IMAGE__", team_b64)
+        .replace("__LIAO_IMAGE__", liao_b64)
+        .replace("__TSENG_IMAGE__", tseng_b64)
+        .replace("__CHIOU_IMAGE__", chiou_b64)
         .replace("__LABEL__", label)
     )
     components.html(html, height=540 if kind == "team" else 380, scrolling=False)
@@ -2535,11 +2622,7 @@ def page_team_pitch() -> None:
 
     left, right = st.columns([1.05, 1])
     with left:
-        st.image(
-            TEAM_ILLUSTRATION_IMAGE,
-            caption="團隊形象插畫：廖怡絜、曾楷芸、邱芷凡",
-            use_container_width=True,
-        )
+        render_team_photo_grid()
     with right:
         st.markdown(
             f"""
@@ -2555,7 +2638,12 @@ def page_team_pitch() -> None:
             unsafe_allow_html=True,
         )
 
-    render_motion_visual("team", f"廖怡絜、曾楷芸、邱芷凡：{identity['tagline']}")
+    st.subheader("工作分配")
+    st.image(
+        WORK_ASSIGNMENT_IMAGE,
+        caption="核心團隊工作分配：CEO / CFO / CMO",
+        use_container_width=True,
+    )
     st.markdown(
         """
         我們是清大計財碩一學生：廖怡絜、曾楷芸、邱芷凡。團隊把外宿生活的真實痛點，
@@ -2592,9 +2680,9 @@ def page_team_pitch() -> None:
     render_deep_table(
         "把背景轉成執行力",
         [
-            ("廖怡絜", "成本、損益、定價與 pitch 財務模型", "把 NT$150 的低價產品講成可持續的商業模型。"),
-            ("曾楷芸", "校園通路、外宿族訪談與市場切入", "讓產品從清大周邊開始驗證，而不是空泛談大市場。"),
-            ("邱芷凡", "使用者情境、產品規格與試點回饋", "把清理手感、密封尺寸、濾芯回購變成可測 KPI。"),
+            ("廖怡絜", "CEO：整體戰略與產品願景", "負責供應鏈整合與量產規劃。"),
+            ("曾楷芸", "CFO：財務預測與資金調度", "確保 18 個月內達成損益兩平目標。"),
+            ("邱芷凡", "CMO：市場定位與品牌拓展", "主導 B2B 物業合作與 B2C 品牌拓展，推動「無痛升級」策略。"),
             ("計財背景", "用數據、成本與風險思維管理硬體試點", "避免只停留在創意，能往量產與銷售推進。"),
         ],
     )
