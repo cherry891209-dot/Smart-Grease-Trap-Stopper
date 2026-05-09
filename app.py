@@ -67,16 +67,27 @@ CUSTOM_CSS = """
         min-height: 520px;
         padding: clamp(28px, 5vw, 64px);
         border-radius: 8px;
-        background:
-            linear-gradient(90deg, rgba(248,245,238,.98) 0 43%, rgba(248,245,238,.78) 58%, rgba(248,245,238,.22) 100%),
-            url("data:image/__HERO_MIME__;base64,__HERO_PLACEHOLDER__");
-        background-size: cover, auto 108%;
-        background-position: center, center right;
-        background-repeat: no-repeat;
+        background: #fbfaf5;
         color: var(--ink);
         display: grid;
+        grid-template-columns: minmax(0, .9fr) minmax(360px, 1.1fr);
+        gap: clamp(24px, 4vw, 56px);
         align-content: center;
+        align-items: center;
         box-shadow: 0 26px 80px rgba(23, 33, 29, .18);
+    }
+
+    .hero-text {
+        max-width: 680px;
+    }
+
+    .hero-product {
+        width: 100%;
+        max-width: 760px;
+        justify-self: end;
+        border-radius: 8px;
+        object-fit: contain;
+        filter: drop-shadow(0 26px 38px rgba(23,33,29,.16));
     }
 
     .hero h1 {
@@ -332,9 +343,9 @@ CUSTOM_CSS = """
     .hero::before {
         content: "";
         position: absolute;
-        right: 6%;
+        right: 4%;
         top: 10%;
-        width: 38%;
+        width: 44%;
         height: 72%;
         z-index: 1;
         border: 2px dashed rgba(120,160,131,.42);
@@ -365,6 +376,7 @@ CUSTOM_CSS = """
     .hero h1 { animation: slideUp 760ms 120ms ease-out both; }
     .hero .subtitle { animation: slideUp 760ms 220ms ease-out both; }
     .hero p { animation: slideUp 760ms 320ms ease-out both; }
+    .hero-product { animation: cardRise 760ms 260ms ease-out both; }
 
     .card,
     .persona,
@@ -1291,9 +1303,14 @@ CUSTOM_CSS = """
         .hero {
             min-height: 620px;
             padding: 32px 28px 280px;
-            background-size: cover, auto 54%;
-            background-position: center, center bottom 18px;
+            grid-template-columns: 1fr;
+            gap: 22px;
             align-content: start;
+        }
+
+        .hero-product {
+            max-width: 100%;
+            justify-self: center;
         }
 
         .hero h1 {
@@ -2268,15 +2285,18 @@ def page_home() -> None:
     render_image_marquee()
 
     st.markdown(
-        """
+        f"""
         <div class="hero">
-            <div class="eyebrow">Startup World Cup Pitch</div>
-            <h1>Smart Grease-Trap Stopper</h1>
-            <div class="subtitle">外宿族的排水守護者</div>
-            <p>
-                用一個可替換的水槽塞，在學生倒湯、洗鍋、清廚餘的日常瞬間，
-                自動攔截油脂、減少惡臭，讓老舊租屋管線少一點崩潰。
-            </p>
+            <div class="hero-text">
+                <div class="eyebrow">Startup World Cup Pitch</div>
+                <h1>Smart Grease-Trap Stopper</h1>
+                <div class="subtitle">外宿族的排水守護者</div>
+                <p>
+                    用一個可替換的水槽塞，在學生倒湯、洗鍋、清廚餘的日常瞬間，
+                    自動攔截油脂、減少惡臭，讓老舊租屋管線少一點崩潰。
+                </p>
+            </div>
+            <img class="hero-product" src="{image_data_uri(PRODUCT_ILLUSTRATION_IMAGE)}" alt="Smart Grease-Trap Stopper 手繪產品圖">
         </div>
         """,
         unsafe_allow_html=True,
