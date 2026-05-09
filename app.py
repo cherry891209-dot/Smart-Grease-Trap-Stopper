@@ -1221,17 +1221,30 @@ CUSTOM_CSS = """
     }
 
     div[data-testid="stSegmentedControl"] button {
-        min-height: 48px;
+        min-height: 52px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 6px 18px 4px;
+        padding: 0 18px;
+    }
+
+    div[data-testid="stSegmentedControl"] button > div,
+    div[data-testid="stSegmentedControl"] button [data-testid="stMarkdownContainer"] {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
     }
 
     div[data-testid="stSegmentedControl"] button p {
         margin: 0;
-        line-height: 1.15;
-        transform: translateY(2px);
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100%;
+        transform: none;
     }
 
     div[data-baseweb="input"] input,
