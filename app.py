@@ -13,15 +13,15 @@ APARTMENT_SINK_IMAGE = BASE_DIR / "assets" / "apartment-sink.jpg"
 TEAM_ILLUSTRATION_IMAGE = BASE_DIR / "assets" / "team-illustration.png"
 TEAM_MEMBERS_REDRAWN_IMAGE = BASE_DIR / "assets" / "team-members-redrawn.png"
 PRODUCT_ILLUSTRATION_IMAGE = BASE_DIR / "assets" / "product-illustration.png"
-LIAO_IMAGE = BASE_DIR / "廖怡絜.JPG"
-TSENG_IMAGE = BASE_DIR / "曾楷芸.JPG"
-CHIOU_IMAGE = BASE_DIR / "邱芷凡.JPG"
+LIAO_IMAGE = BASE_DIR / "assets" / "team-liao.jpg"
+TSENG_IMAGE = BASE_DIR / "assets" / "team-tseng.jpg"
+CHIOU_IMAGE = BASE_DIR / "assets" / "team-chiou.jpg"
 RULES_PDF = BASE_DIR / "612483020334563589_Startup World Cup Pitch Deck Outline_ 2025.pdf"
 PROPOSAL_PDF = BASE_DIR / "612513577919578249_Smart_Grease_Trap_Revolution_(4).pdf"
 
 
 st.set_page_config(
-    page_title="Smart Grease-Trap Stopper",
+    page_title="Clario Living",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -1388,7 +1388,7 @@ def card(number: str, title: str, body: str) -> None:
 
 
 def render_product_demo() -> None:
-    render_anim_component("solution", "30 秒替換水槽塞，油脂留在透明收集倉，清水繼續排出。")
+    render_anim_component("solution", "Swap in the stopper in 30 seconds: oil stays in the clear chamber while water keeps draining.")
 
 
 def render_motion_visual(kind: str, label: str) -> None:
@@ -1397,14 +1397,14 @@ def render_motion_visual(kind: str, label: str) -> None:
 
 def render_team_photo_grid() -> None:
     members = [
-        ("廖怡絜", "CEO", "整體戰略與產品願景", LIAO_IMAGE),
-        ("曾楷芸", "CFO", "財務預測與資金調度", TSENG_IMAGE),
-        ("邱芷凡", "CMO", "市場定位與品牌拓展", CHIOU_IMAGE),
+        ("Yi-Chieh Liao", "CEO", "Company strategy and product vision", LIAO_IMAGE),
+        ("Kai-Yun Tseng", "CFO", "Financial planning and capital allocation", TSENG_IMAGE),
+        ("Chih-Fan Chiou", "CMO", "Market positioning and brand growth", CHIOU_IMAGE),
     ]
     cards = "".join(
         f"""
         <article class="team-photo-card">
-            <img src="{image_data_uri(path)}" alt="{name} 團隊照片">
+            <img src="{image_data_uri(path)}" alt="{name} team photo">
             <div>
                 <span>{role}</span>
                 <strong>{name}</strong>
@@ -1473,15 +1473,15 @@ def render_anim_component(kind: str, label: str) -> None:
     tseng_b64 = image_to_base64(TSENG_IMAGE)
     chiou_b64 = image_to_base64(CHIOU_IMAGE)
     titles = {
-        "problem": "油脂阻塞形成路徑",
-        "solution": "換上水槽塞後的油水分流",
-        "product": "產品零件爆炸圖",
-        "market": "校園通路擴散模型",
-        "finance": "硬體銷售 + 濾芯回購",
-        "pilot": "90 天校園試點流程",
-        "radar": "評審問答防守儀表板",
-        "team": "清大計財碩一團隊分工",
-        "deck": "簡報轉成互動網站",
+        "problem": "How Grease Clogs Form",
+        "solution": "Oil-Water Separation After Installation",
+        "product": "Product Component View",
+        "market": "Campus Launch Network",
+        "finance": "Hardware Sales + Filter Refills",
+        "pilot": "90-Day Campus Pilot",
+        "radar": "Investor Q&A Defense Board",
+        "team": "Clario Living Team Roles",
+        "deck": "Deck to Interactive Website",
     }
     scenes = {
         "problem": """
@@ -1489,16 +1489,16 @@ def render_anim_component(kind: str, label: str) -> None:
           <div class="pipe-main"></div><div class="pipe-turn"></div><div class="pipe-shadow"></div>
           <div class="grease-dot g1"></div><div class="grease-dot g2"></div><div class="grease-dot g3"></div><div class="grease-dot g4"></div>
           <div class="sticky-layer l1"></div><div class="sticky-layer l2"></div><div class="sticky-layer l3"></div>
-          <div class="bug-risk">異味上升</div><div class="steam-wave w1"></div><div class="steam-wave w2"></div>
-          <div class="scene-note n-left">油膩湯汁倒入</div><div class="scene-note n-mid">油脂冷卻附著</div><div class="scene-note n-right">排水變慢</div>
+          <div class="bug-risk">Odor Rising</div><div class="steam-wave w1"></div><div class="steam-wave w2"></div>
+          <div class="scene-note n-left">Greasy Soup Poured In</div><div class="scene-note n-mid">Grease Cools and Sticks</div><div class="scene-note n-right">Slow Drainage</div>
         """,
         "solution": """
           <div class="install-rail"></div>
-          <div class="old-stopper">舊塞</div><div class="swap-arrow"></div><div class="new-stopper">Smart<br>Stopper</div>
+          <div class="old-stopper">Old Stopper</div><div class="swap-arrow"></div><div class="new-stopper">Smart<br>Stopper</div>
           <div class="sink-bowl"></div><div class="cutaway-pipe"></div><div class="flow-vortex"></div>
-          <div class="collector-tank"><div class="tank-oil"></div><div class="tank-water"></div><span>透明收集倉</span></div>
+          <div class="collector-tank"><div class="tank-oil"></div><div class="tank-water"></div><span>Clear Collection Chamber</span></div>
           <div class="water-exit"></div><div class="drop dx1"></div><div class="drop dx2"></div><div class="drop dx3"></div>
-          <div class="step-chip c1">1 取下舊塞</div><div class="step-chip c2">2 壓入新塞</div><div class="step-chip c3">3 油水分流</div><div class="step-chip c4">4 倒掉收集倉</div>
+          <div class="step-chip c1">1 Remove Old Stopper</div><div class="step-chip c2">2 Press In New Stopper</div><div class="step-chip c3">3 Separate Oil and Water</div><div class="step-chip c4">4 Empty Chamber</div>
         """,
         "product": """
           <div class="exploded-axis"></div>
@@ -1506,72 +1506,72 @@ def render_anim_component(kind: str, label: str) -> None:
           <div class="gasket-ring"></div><div class="vane-wheel"><i></i><b></b><em></em></div>
           <div class="clear-chamber"><div class="chamber-oil"></div><div class="chamber-water"></div></div>
           <div class="filter-pack"><span></span></div>
-          <div class="callout co1">A 密封圈：貼合落水頭</div><div class="callout co2">B 導流片：延長停留</div><div class="callout co3">C 收集倉：看得見油脂</div><div class="callout co4">D 濾芯：低額回購</div>
+          <div class="callout co1">A Seal Ring: Fits the Drain</div><div class="callout co2">B Flow Guide: Extends Dwell Time</div><div class="callout co3">C Chamber: Visible Grease Capture</div><div class="callout co4">D Filter: Low-Cost Refills</div>
         """,
         "market": """
-          <div class="campus-map"></div><div class="campus-hub">清大</div>
+          <div class="campus-map"></div><div class="campus-hub">NTHU</div>
           <div class="market-path p-a"></div><div class="market-path p-b"></div><div class="market-path p-c"></div><div class="market-path p-d"></div>
-          <div class="market-node dorm">第一站<br>外宿生</div><div class="market-node shop">購買點<br>五金/百貨</div><div class="market-node pack">開學季<br>新生租屋包</div><div class="market-node sub">每月<br>濾芯回購</div>
+          <div class="market-node dorm">First Users<br>Renters</div><div class="market-node shop">Retail<br>Hardware Stores</div><div class="market-node pack">Move-In<br>Starter Kits</div><div class="market-node sub">Monthly<br>Refills</div>
           <div class="packet pk1"></div><div class="packet pk2"></div><div class="packet pk3"></div>
         """,
         "finance": """
           <div class="money-flow">
-            <div class="money-box box-price"><strong>硬體售價</strong><span>NT$150</span></div>
+            <div class="money-box box-price"><strong>Hardware Price</strong><span>NT$150</span></div>
             <div class="flow-arrow a1"></div>
-            <div class="money-box box-cost"><strong>扣除成本</strong><span>製造 + 包裝 + 通路</span></div>
+            <div class="money-box box-cost"><strong>Cost Base</strong><span>Manufacturing + Packaging + Retail</span></div>
             <div class="flow-arrow a2"></div>
-            <div class="money-box box-profit"><strong>硬體毛利</strong><span>可支撐校園試點</span></div>
+            <div class="money-box box-profit"><strong>Hardware Margin</strong><span>Funds Campus Pilots</span></div>
           </div>
           <div class="sub-flow">
-            <div class="sub-card"><strong>每月濾芯</strong><span>低額回購</span></div>
+            <div class="sub-card"><strong>Monthly Filter</strong><span>Low-Cost Refills</span></div>
             <div class="sub-arrow"></div>
-            <div class="sub-card"><strong>LTV 增加</strong><span>不是只賣一次</span></div>
+            <div class="sub-card"><strong>Higher LTV</strong><span>More Than One Sale</span></div>
           </div>
           <div class="finance-bars"><div></div><div></div><div></div><div></div></div>
         """,
         "pilot": """
           <div class="calendar-grid"></div><div class="pilot-road"></div><div class="pilot-runner"></div>
-          <div class="milestone m1"><strong>D1-15</strong><span>訪談</span></div>
-          <div class="milestone m2"><strong>D16-35</strong><span>打樣</span></div>
-          <div class="milestone m3"><strong>D36-65</strong><span>試用</span></div>
-          <div class="milestone m4"><strong>D66-90</strong><span>開賣</span></div>
-          <div class="kpi k1">適配率</div><div class="kpi k2">攔截量</div><div class="kpi k3">回購率</div>
+          <div class="milestone m1"><strong>D1-15</strong><span>Interviews</span></div>
+          <div class="milestone m2"><strong>D16-35</strong><span>Prototype</span></div>
+          <div class="milestone m3"><strong>D36-65</strong><span>Trial</span></div>
+          <div class="milestone m4"><strong>D66-90</strong><span>Launch</span></div>
+          <div class="kpi k1">Fit Rate</div><div class="kpi k2">Capture Volume</div><div class="kpi k3">Refill Rate</div>
         """,
         "radar": """
           <div class="judge-table">
-            <div class="judge-row"><strong>1 痛點</strong><span>房東壓力 / 通管費 / 臭味</span></div>
-            <div class="judge-row"><strong>2 解方</strong><span>不改管線，只換水槽塞</span></div>
-            <div class="judge-row"><strong>3 商業</strong><span>NT$150 低門檻 + 濾芯回購</span></div>
-            <div class="judge-row"><strong>4 執行</strong><span>清大周邊 90 天試點</span></div>
+            <div class="judge-row"><strong>1 Problem</strong><span>Landlord Pressure / Plumbing Cost / Odor</span></div>
+            <div class="judge-row"><strong>2 Solution</strong><span>No Pipe Work, Just Swap the Stopper</span></div>
+            <div class="judge-row"><strong>3 Business</strong><span>NT$150 Entry + Filter Refills</span></div>
+            <div class="judge-row"><strong>4 Execution</strong><span>90-Day NTHU Area Pilot</span></div>
           </div>
           <div class="judge-score">
             <div class="score-axis x"></div><div class="score-axis y"></div>
-            <div class="score-card p">痛點</div><div class="score-card s">解方</div><div class="score-card b">商業</div><div class="score-card e">執行</div>
-            <div class="score-core">守住<br>四題</div>
+            <div class="score-card p">Problem</div><div class="score-card s">Solution</div><div class="score-card b">Business</div><div class="score-card e">Execution</div>
+            <div class="score-core">Defend<br>Four Themes</div>
           </div>
         """,
         "team": """
           <div class="team-board">
             <div class="member-card liao">
               <div class="portrait liao-photo"></div>
-              <strong>廖怡絜</strong><span>CEO<br>整體戰略與產品願景</span>
+              <strong>Yi-Chieh Liao</strong><span>CEO<br>Company strategy and product vision</span>
             </div>
             <div class="member-card tseng">
               <div class="portrait tseng-photo"></div>
-              <strong>曾楷芸</strong><span>CFO<br>財務預測與資金調度</span>
+              <strong>Kai-Yun Tseng</strong><span>CFO<br>Financial planning and capital allocation</span>
             </div>
             <div class="member-card chiou">
               <div class="portrait chiou-photo"></div>
-              <strong>邱芷凡</strong><span>CMO<br>市場定位與品牌拓展</span>
+              <strong>Chih-Fan Chiou</strong><span>CMO<br>Market positioning and brand growth</span>
             </div>
           </div>
-          <div class="team-output">共同產出：產品願景 + 財務規劃 + 市場拓展策略</div>
+          <div class="team-output">Shared output: product vision + financial planning + market growth strategy</div>
           <div class="team-line l1"></div><div class="team-line l2"></div><div class="team-line l3"></div>
         """,
         "deck": """
           <div class="deck-stack">
-            <div class="slide-card s1">問題</div><div class="slide-card s2">解方</div>
-            <div class="slide-card s3">市場</div><div class="slide-card s4">財務</div>
+            <div class="slide-card s1">Problem</div><div class="slide-card s2">Solution</div>
+            <div class="slide-card s3">Market</div><div class="slide-card s4">Finance</div>
           </div>
           <div class="convert-arrow"></div><div class="browser-mock"><div class="browser-top"></div><div class="browser-hero"></div><div class="browser-row"></div><div class="browser-row short"></div></div>
           <div class="rule-badge">SWC</div><div class="rule-badge b2">Pitch</div>
@@ -1645,15 +1645,15 @@ def render_lab_visual(weekly_oil: float, captured: float, fill_ratio: float, cap
       @keyframes waterOut {{ 50% {{ transform:scaleX(1.18); opacity:.7; }} }}
     </style>
     <div class="lab">
-      <div class="title">互動實驗室：即時油脂攔截模擬</div>
-      <div class="badge b1">每週油脂 {weekly_oil:.0f} ml</div>
-      <div class="badge b2">攔截效率 {capture_rate}%</div>
-      <div class="badge b3">{clean_days} 天清理一次</div>
+      <div class="title">Interactive Lab: Real-Time Grease Capture Simulation</div>
+      <div class="badge b1">Weekly grease {weekly_oil:.0f} ml</div>
+      <div class="badge b2">Capture rate {capture_rate}%</div>
+      <div class="badge b3">{clean_days} days per cleaning</div>
       <div class="reservoir"><div class="oil"></div><div class="water"></div></div>
       <div class="tube"></div><div class="filter-unit"></div>
       <div class="collector"><div class="captured"></div></div><div class="clean-water"></div><div class="bench"></div>
-      <div class="stage-label sl1">倒入油水</div><div class="stage-label sl2">旋流分離</div><div class="stage-label sl3">收集油脂</div>
-      <div class="readout">本月約攔截 {captured * 4:.0f} ml 油脂<small>左：倒入油水｜中：分流｜右：收集倉填滿程度</small></div>
+      <div class="stage-label sl1">Pour Oil + Water</div><div class="stage-label sl2">Vortex Separation</div><div class="stage-label sl3">Grease Capture</div>
+      <div class="readout">Estimated monthly capture {captured * 4:.0f} ml grease<small>Left: pour oil-water | Center: separate | Right: chamber fill level</small></div>
     </div>
     """
     components.html(html, height=450, scrolling=False)
@@ -1668,16 +1668,16 @@ def render_photo_grid() -> None:
         <div class="photo-grid">
             <div class="photo-tile">
                 <img src="data:image/jpeg;base64,{messy}" alt="messy kitchen sink with dishes">
-                <div class="photo-caption">真實生活感：晚餐後的油膩碗盤與狹小水槽</div>
+                <div class="photo-caption">Real-life context: greasy dishes and a cramped sink after dinner</div>
             </div>
             <div class="photo-stack">
                 <div class="photo-tile small">
                     <img src="data:image/jpeg;base64,{drain}" alt="kitchen sink drain close up">
-                    <div class="photo-caption">風險入口：油脂最後都會進到這裡</div>
+                    <div class="photo-caption">Risk entry point: grease eventually reaches the drain</div>
                 </div>
                 <div class="photo-tile small">
                     <img src="data:image/jpeg;base64,{apartment}" alt="small apartment kitchen sink">
-                    <div class="photo-caption">租屋場景：小套房、低預算、難施工</div>
+                    <div class="photo-caption">Rental context: small studios, low budgets, no renovation</div>
                 </div>
             </div>
         </div>
@@ -1690,10 +1690,10 @@ def render_signal_strip() -> None:
     st.markdown(
         """
         <div class="animated-strip">
-            <div class="signal"><strong>Oil</strong><span>殘油進入水槽前先被導流</span></div>
-            <div class="signal"><strong>Trap</strong><span>油脂浮起，停留在透明收集倉</span></div>
-            <div class="signal"><strong>Clean</strong><span>清水繼續排出，降低管壁累積</span></div>
-            <div class="signal"><strong>Repeat</strong><span>可分解濾芯帶動低額回購</span></div>
+            <div class="signal"><strong>Oil</strong><span>Residual oil is guided before it enters the drain</span></div>
+            <div class="signal"><strong>Trap</strong><span>Grease floats and stays in the clear collection chamber</span></div>
+            <div class="signal"><strong>Clean</strong><span>Water keeps draining, reducing buildup on pipe walls</span></div>
+            <div class="signal"><strong>Repeat</strong><span>Compostable filters drive low-cost refills</span></div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -1702,16 +1702,16 @@ def render_signal_strip() -> None:
 
 def render_image_marquee() -> None:
     items = [
-        (BASE_DIR / "assets" / "marquee-01-apartment-sink.jpg", "小套房水槽：空間小、難施工"),
-        (BASE_DIR / "assets" / "marquee-02-messy-window-sink.jpg", "晚餐後水槽：髒碗盤與殘湯"),
-        (BASE_DIR / "assets" / "marquee-03-drain-closeup.jpg", "排水口近照：油脂累積入口"),
-        (BASE_DIR / "assets" / "marquee-04-dark-dirty-sink.jpg", "暗光廚房：真實生活的清潔拖延"),
-        (BASE_DIR / "assets" / "marquee-05-stainless-drain.jpg", "金屬落水頭：租屋水槽常見規格"),
-        (BASE_DIR / "assets" / "marquee-06-water-drain.jpg", "水流進排水孔：油脂跟著水走"),
-        (BASE_DIR / "assets" / "marquee-07-running-faucet.jpg", "水龍頭沖洗：日常洗碗高頻場景"),
-        (BASE_DIR / "assets" / "marquee-08-greasy-dishes.jpg", "油膩鍋具：最容易堵住管線的殘油"),
-        (BASE_DIR / "assets" / "marquee-09-person-cleaning.jpg", "洗碗動作：學生不想碰油污"),
-        (BASE_DIR / "assets" / "marquee-10-soapy-sink.jpg", "泡沫水槽：清潔後仍有殘留風險"),
+        (BASE_DIR / "assets" / "marquee-01-apartment-sink.jpg", "Small rental sink: tight space, hard to renovate"),
+        (BASE_DIR / "assets" / "marquee-02-messy-window-sink.jpg", "After-dinner sink: dirty dishes and leftover soup"),
+        (BASE_DIR / "assets" / "marquee-03-drain-closeup.jpg", "Drain close-up: where grease buildup starts"),
+        (BASE_DIR / "assets" / "marquee-04-dark-dirty-sink.jpg", "Dim kitchen: real-life cleaning procrastination"),
+        (BASE_DIR / "assets" / "marquee-05-stainless-drain.jpg", "Metal drain: common rental sink hardware"),
+        (BASE_DIR / "assets" / "marquee-06-water-drain.jpg", "Water entering drain: grease travels with it"),
+        (BASE_DIR / "assets" / "marquee-07-running-faucet.jpg", "Running faucet: everyday dishwashing moment"),
+        (BASE_DIR / "assets" / "marquee-08-greasy-dishes.jpg", "Greasy cookware: the residue most likely to clog pipes"),
+        (BASE_DIR / "assets" / "marquee-09-person-cleaning.jpg", "Dishwashing: users do not want to touch grease"),
+        (BASE_DIR / "assets" / "marquee-10-soapy-sink.jpg", "Soapy sink: residue risk remains after cleaning"),
     ]
     rendered = []
     for path, caption in items * 2:
@@ -1842,9 +1842,9 @@ def render_deep_table(title: str, rows: list[tuple[str, str, str]]) -> None:
             <table class="matrix">
                 <thead>
                     <tr>
-                        <th>項目</th>
-                        <th>內容</th>
-                        <th>說服力</th>
+                        <th>Item</th>
+                        <th>Content</th>
+                        <th>Why It Matters</th>
                     </tr>
                 </thead>
                 <tbody>{body}</tbody>
@@ -1857,9 +1857,9 @@ def render_deep_table(title: str, rows: list[tuple[str, str, str]]) -> None:
 
 def render_personas() -> None:
     personas = [
-        ("宵夜型學生", "一週 4 次外食，常倒麵湯和火鍋湯。需要的是不改變習慣的預防。"),
-        ("老屋套房族", "屋齡 20 年以上，水槽小、排水慢、怕房東扣押金。願意買低價保險。"),
-        ("共用廚房宿舍", "多人使用、責任分散，最需要可視化收集倉提醒大家清理。"),
+        ("Late-Night Eater", "Eats out four times a week and often dumps noodle or hot-pot soup. Needs prevention without behavior change."),
+        ("Old-Studio Renter", "Lives in a 20+ year-old unit with a small slow sink and deposit anxiety. Will buy low-cost insurance."),
+        ("Shared-Kitchen Dorm", "Many users, unclear responsibility, and a strong need for visible reminders to clean."),
     ]
     cols = st.columns(3)
     for col, (name, body) in zip(cols, personas):
@@ -1881,23 +1881,23 @@ def render_roadmap() -> None:
         <div class="roadmap">
             <div class="step">
                 <div class="number">Week 1-2</div>
-                <h3>校園訪談</h3>
-                <p class="muted">訪談 30 位外宿學生，驗證倒油頻率、異味和通管成本痛點。</p>
+                <h3>Campus Interviews</h3>
+                <p class="muted">Interview 30 student renters to validate oil disposal frequency, odor, and plumbing-cost pain points.</p>
             </div>
             <div class="step">
                 <div class="number">Week 3-5</div>
-                <h3>3D 打樣</h3>
-                <p class="muted">測試密封圈尺寸、收集倉容量與拆洗手感，找出可量產結構。</p>
+                <h3>3D Prototype</h3>
+                <p class="muted">Test seal size, chamber capacity, and cleaning feel to define a manufacturable structure.</p>
             </div>
             <div class="step">
                 <div class="number">Week 6-8</div>
-                <h3>宿舍試點</h3>
-                <p class="muted">在清大周邊 20 個水槽試用，追蹤排水速度、異味與清理頻率。</p>
+                <h3>Dorm Pilot</h3>
+                <p class="muted">Pilot in 20 sinks near NTHU and track drainage speed, odor, and cleaning frequency.</p>
             </div>
             <div class="step">
                 <div class="number">Month 3</div>
-                <h3>開學季販售</h3>
-                <p class="muted">與生活百貨、新生租屋包合作，推出水槽塞加濾芯入門組。</p>
+                <h3>Move-In Season Launch</h3>
+                <p class="muted">Partner with lifestyle retailers and renter starter kits to sell a stopper-plus-filter pack.</p>
             </div>
         </div>
         """,
@@ -1911,30 +1911,30 @@ def render_competitor_matrix() -> None:
         <table class="matrix">
             <thead>
                 <tr>
-                    <th>方案</th>
-                    <th>學生接受度</th>
-                    <th>限制</th>
-                    <th>我們的切入</th>
+                    <th>Alternative</th>
+                    <th>Student Acceptance</th>
+                    <th>Limitations</th>
+                    <th>Our Opening</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>傳統濾網</td>
-                    <td>高，便宜且常見</td>
-                    <td>攔截固體，不處理油脂與異味</td>
-                    <td>補足油脂攔截與可視化收集</td>
+                    <td>Traditional Sink Strainer</td>
+                    <td>High: cheap and familiar</td>
+                    <td>Catches solids but not grease or odor</td>
+                    <td>Add grease capture and visible collection</td>
                 </tr>
                 <tr>
-                    <td>化學通管劑</td>
-                    <td>中，堵塞後才會買</td>
-                    <td>刺激性、對老舊管線有疑慮</td>
-                    <td>從事後處理改為日常預防</td>
+                    <td>Chemical Drain Cleaner</td>
+                    <td>Medium: bought after clogging</td>
+                    <td>Harsh and risky for old pipes</td>
+                    <td>Shift from reaction to daily prevention</td>
                 </tr>
                 <tr>
-                    <td>大型油脂截留器</td>
-                    <td>低，不適合小套房</td>
-                    <td>安裝成本高、占空間</td>
-                    <td>縮小成水槽塞規格，免施工</td>
+                    <td>Commercial Grease Trap</td>
+                    <td>Low: unsuitable for studios</td>
+                    <td>Expensive installation and space-consuming</td>
+                    <td>Shrink the idea into a no-install stopper</td>
                 </tr>
             </tbody>
         </table>
@@ -1959,40 +1959,40 @@ def start_checkup() -> None:
 
 def score_level(score: int) -> tuple[str, str]:
     if score >= 14:
-        return "高風險", "你的排水情境很適合用預防型油脂攔截裝置，尤其是老舊套房、小水槽和常倒湯汁的使用者。"
+        return "High Risk", "Your sink routine is a strong fit for preventive grease capture, especially with old studios, small sinks, or frequent soup disposal."
     if score >= 8:
-        return "中風險", "目前已有阻塞和異味的前兆。建議先從水槽塞、濾網和每週清理開始，降低管線累積油脂。"
-    return "低風險", "你的使用習慣相對安全，但若住處屋齡高或共用廚房頻率增加，仍建議備一個低成本預防工具。"
+        return "Medium Risk", "You already show early signs of clogging and odor. Start with a stopper, strainer, and weekly cleaning to reduce pipe buildup."
+    return "Low Risk", "Your habits are relatively safe, but old buildings or shared kitchens still justify a low-cost preventive tool."
 
 
 def render_checkup_form() -> None:
-    st.subheader("租屋排水風險自我檢測")
-    st.caption("6 題快速判斷你的水槽是否正走向阻塞、異味或蟲害風險。")
+    st.subheader("Rental Sink Risk Check")
+    st.caption("Six quick questions to see whether your sink is trending toward clogs, odor, or pest risk.")
 
     questions = [
         (
-            "你一週會把火鍋湯、乾麵醬汁、炸物油水倒進水槽幾次？",
-            {"0 次": 0, "1-2 次": 1, "3-5 次": 3, "幾乎每天": 4},
+            "How often do you pour hot-pot soup, noodle sauce, or oily food residue into the sink each week?",
+            {"0 times": 0, "1-2 times": 1, "3-5 times": 3, "Almost daily": 4},
         ),
         (
-            "水槽排水速度最近是否變慢？",
-            {"沒有": 0, "偶爾": 1, "明顯變慢": 3, "常常積水": 4},
+            "Has your sink drainage slowed recently?",
+            {"No": 0, "Sometimes": 1, "Clearly slower": 3, "Often standing water": 4},
         ),
         (
-            "廚房或浴室排水口是否有異味？",
-            {"沒有": 0, "偶爾有": 1, "每天都聞得到": 3, "異味會擴散到房間": 4},
+            "Does your kitchen or bathroom drain smell?",
+            {"No": 0, "Sometimes": 1, "Every day": 3, "Odor spreads into the room": 4},
         ),
         (
-            "租屋處屋齡或管線狀態？",
-            {"新屋或剛換管線": 0, "不確定": 1, "屋齡 20 年以上": 3, "曾經堵塞或漏水": 4},
+            "Building age or pipe condition?",
+            {"New unit or recently replaced pipes": 0, "Not sure": 1, "20+ years old": 3, "Has clogged or leaked before": 4},
         ),
         (
-            "你願意每週拆洗水槽濾網或存水彎嗎？",
-            {"願意而且會做": 0, "偶爾會": 1, "很少做": 3, "完全不想碰": 4},
+            "Would you clean the strainer or trap every week?",
+            {"Yes, and I do it": 0, "Sometimes": 1, "Rarely": 3, "Absolutely not": 4},
         ),
         (
-            "你能接受一次通管維修約 1500 元嗎？",
-            {"可以接受": 0, "有點心痛": 1, "希望盡量避免": 3, "完全不能接受": 4},
+            "Can you accept a plumbing repair costing about NT$1,500?",
+            {"Acceptable": 0, "Painful but possible": 1, "I would rather avoid it": 3, "Not acceptable": 4},
         ),
     ]
 
@@ -2007,7 +2007,7 @@ def render_checkup_form() -> None:
             )
             total += options[choice]
 
-        submitted = st.form_submit_button("查看檢測結果", use_container_width=True)
+        submitted = st.form_submit_button("See Results", use_container_width=True)
 
     if submitted:
         st.session_state.checkup_done = True
@@ -2018,7 +2018,7 @@ def render_checkup_form() -> None:
         level, advice = score_level(score)
         st.progress(score / 24)
         left, right = st.columns([1, 2])
-        left.metric("風險分數", f"{score}/24", level, border=True)
+        left.metric("Risk Score", f"{score}/24", level, border=True)
         with right:
             st.markdown(
                 f"""
@@ -2034,21 +2034,21 @@ def render_checkup_form() -> None:
 def page_demo_lab() -> None:
     render_css()
     section_label("Interactive Demo Lab")
-    st.title("油脂攔截互動實驗室")
+    st.title("Interactive Grease Capture Lab")
     st.markdown(
         """
-        評審通常會問：這個東西到底怎麼工作？這頁把抽象技術變成可操作的 demo。
-        調整倒油頻率、用水量和清理頻率，就能看到估計攔截量和維護提醒。
+        Investors will ask how this actually works. This page turns the mechanism into a usable demo.
+        Adjust greasy-meal frequency, water volume, and cleaning cadence to see estimated capture and maintenance reminders.
         """
     )
     render_signal_strip()
 
     left, right = st.columns([1.05, 1])
     with right:
-        meals = st.slider("每週油膩餐點次數", 0, 14, 6)
-        oil_per_meal = st.slider("每餐平均油脂殘留量 ml", 2, 40, 14)
-        capture_rate = st.slider("目標攔截效率", 40, 90, 72, format="%d%%")
-        clean_days = st.slider("幾天清理一次收集倉", 1, 14, 7)
+        meals = st.slider("Greasy meals per week", 0, 14, 6)
+        oil_per_meal = st.slider("Average oil residue per meal (ml)", 2, 40, 14)
+        capture_rate = st.slider("Target capture rate", 40, 90, 72, format="%d%%")
+        clean_days = st.slider("Days between chamber cleanings", 1, 14, 7)
 
         weekly_oil = meals * oil_per_meal
         captured = weekly_oil * capture_rate / 100
@@ -2056,41 +2056,41 @@ def page_demo_lab() -> None:
         collector_capacity = 120
         fill_ratio = min(1.0, (captured / 7 * clean_days) / collector_capacity)
 
-        st.metric("每週進入水槽油脂", f"{weekly_oil:.0f} ml", border=True)
-        st.metric("每月預估攔截", f"{monthly_captured:.0f} ml", f"{capture_rate}% 效率", border=True)
+        st.metric("Weekly grease entering sink", f"{weekly_oil:.0f} ml", border=True)
+        st.metric("Estimated monthly capture", f"{monthly_captured:.0f} ml", f"{capture_rate}% efficiency", border=True)
         st.progress(fill_ratio)
         if fill_ratio >= 0.85:
-            st.warning("收集倉接近滿載，建議縮短清理週期。")
+            st.warning("The chamber is close to full. Shorten the cleaning cycle.")
         elif fill_ratio >= 0.5:
-            st.info("目前清理週期可行，但開學季或共用廚房建議更勤清理。")
+            st.info("This cleaning cycle works, but move-in season or shared kitchens need more frequent cleaning.")
         else:
-            st.success("目前清理週期舒適，適合懶人使用情境。")
+            st.success("This cadence is comfortable and fits low-effort use cases.")
     with left:
         render_lab_visual(weekly_oil, captured, fill_ratio, capture_rate, clean_days)
 
     st.divider()
     section_label("User Personas")
-    st.header("三個最容易買單的使用者")
+    st.header("Three Highest-Intent Users")
     render_personas()
 
     st.divider()
     section_label("Scenario Presets")
-    st.header("三種常見租屋情境的建議設定")
+    st.header("Recommended Settings for Common Rental Scenarios")
     cols = st.columns(3)
     with cols[0]:
-        card("Light", "偶爾開伙", "每週 1-2 次油膩餐點，建議 10-14 天清理一次，適合低風險用戶。")
+        card("Light", "Occasional Cooking", "One to two greasy meals per week; clean every 10-14 days. Best for low-risk users.")
     with cols[1]:
-        card("Student", "外食高頻", "每週 5-8 次油膩餐點，建議每週清理一次，濾芯月更換。")
+        card("Student", "Frequent Takeout", "Five to eight greasy meals per week; clean weekly and replace the filter monthly.")
     with cols[2]:
-        card("Shared", "共用廚房", "多人倒湯且責任分散，建議 3-5 天清理一次，搭配可視提醒。")
+        card("Shared", "Shared Kitchen", "Many people dump soup and responsibility is diffuse; clean every 3-5 days with visible reminders.")
 
     render_deep_table(
-        "Demo 數字如何解讀",
+        "How to Read the Demo Numbers",
         [
-            ("每週油脂 ml", "油膩餐點次數乘以每餐殘油", "讓使用者理解日常累積速度。"),
-            ("攔截效率", "用 40%-90% 作為可調假設", "比賽時可根據實測更新。"),
-            ("收集倉滿載", "清理週期與容量換算", "直接回答會不會溢出的疑問。"),
-            ("每月攔截量", "把小油滴放大成月度數字", "讓產品價值更可視化。"),
+            ("Weekly grease ml", "Greasy meals multiplied by oil residue per meal", "Shows users how quickly daily residue accumulates."),
+            ("Capture rate", "Uses 40%-90% as an adjustable assumption", "Can be updated with pilot data before competition."),
+            ("Chamber fill level", "Calculated from cleaning cadence and chamber capacity", "Directly answers whether it will overflow."),
+            ("Monthly capture", "Turns small droplets into monthly impact", "Makes product value visible."),
         ],
     )
 
@@ -2098,36 +2098,36 @@ def page_demo_lab() -> None:
 def page_financials() -> None:
     render_css()
     section_label("Financial Model")
-    st.title("價格、毛利與校園試點試算")
-    render_motion_visual("finance", "低價硬體打開入口，濾芯回購拉高生命週期價值。")
+    st.title("Pricing, Margin, and Campus Pilot Calculator")
+    render_motion_visual("finance", "A low-cost device opens the door; filter refills increase lifetime value.")
     st.markdown(
-        "這頁讓提案從產品創意走向商業可行性。數字是可調模型，方便你比賽前練習回答成本與損益問題。"
+        "This page turns the product concept into a business model. The numbers are adjustable so the team can practice cost and margin questions."
     )
 
-    st.subheader("單位經濟模型")
+    st.subheader("Unit Economics Model")
     col1, col2, col3, col4 = st.columns(4)
-    price = col1.number_input("單入售價 NT$", min_value=80, max_value=400, value=150, step=10)
-    unit_cost = col2.number_input("單入製造成本 NT$", min_value=20, max_value=220, value=58, step=5)
-    channel_fee = col3.number_input("通路/包裝成本 NT$", min_value=0, max_value=120, value=28, step=5)
-    filter_margin = col4.number_input("每月濾芯毛利 NT$", min_value=0, max_value=80, value=12, step=2)
+    price = col1.number_input("Unit price NT$", min_value=80, max_value=400, value=150, step=10)
+    unit_cost = col2.number_input("Unit manufacturing cost NT$", min_value=20, max_value=220, value=58, step=5)
+    channel_fee = col3.number_input("Channel / packaging cost NT$", min_value=0, max_value=120, value=28, step=5)
+    filter_margin = col4.number_input("Monthly filter margin NT$", min_value=0, max_value=80, value=12, step=2)
 
     gross_profit = price - unit_cost - channel_fee
     gross_margin = gross_profit / price if price else 0
     payback_months = price / max(filter_margin, 1)
 
     metrics = st.columns(4)
-    metrics[0].metric("單入毛利", f"NT${gross_profit:.0f}", border=True)
-    metrics[1].metric("硬體毛利率", f"{gross_margin:.0%}", border=True)
-    metrics[2].metric("濾芯年毛利", f"NT${filter_margin * 12:.0f}", border=True)
-    metrics[3].metric("通管費可買", f"{1500 // max(price, 1):.0f} 個", "以 NT$1500 估", border=True)
+    metrics[0].metric("Unit gross profit", f"NT${gross_profit:.0f}", border=True)
+    metrics[1].metric("Hardware margin", f"{gross_margin:.0%}", border=True)
+    metrics[2].metric("Annual filter gross profit", f"NT${filter_margin * 12:.0f}", border=True)
+    metrics[3].metric("Plumbing cost equals", f"{1500 // max(price, 1):.0f} units", "based on NT$1,500", border=True)
 
     st.divider()
-    st.subheader("校園市場滲透試算")
+    st.subheader("Campus Market Penetration Calculator")
     left, right = st.columns([1, 1])
     with left:
-        target_students = st.slider("第一波可觸及外宿學生", 500, 30000, 6000, step=500)
-        adoption = st.slider("首年購買率", 1, 35, 8, format="%d%%")
-        subscription = st.slider("濾芯訂閱轉換率", 0, 80, 30, format="%d%%")
+        target_students = st.slider("Reachable student renters in first wave", 500, 30000, 6000, step=500)
+        adoption = st.slider("First-year purchase rate", 1, 35, 8, format="%d%%")
+        subscription = st.slider("Filter subscription conversion", 0, 80, 30, format="%d%%")
     with right:
         units = target_students * adoption / 100
         hardware_revenue = units * price
@@ -2135,38 +2135,37 @@ def page_financials() -> None:
         annual_filter_profit = units * subscription / 100 * filter_margin * 12
         total_profit = hardware_profit + annual_filter_profit
 
-        st.metric("首年銷量", f"{units:,.0f} 個", border=True)
-        st.metric("硬體營收", f"NT${hardware_revenue:,.0f}", border=True)
-        st.metric("首年總毛利", f"NT${total_profit:,.0f}", "含濾芯", border=True)
+        st.metric("First-year units", f"{units:,.0f} units", border=True)
+        st.metric("Hardware revenue", f"NT${hardware_revenue:,.0f}", border=True)
+        st.metric("First-year gross profit", f"NT${total_profit:,.0f}", "including filters", border=True)
 
-    st.caption("註：以上為 pitch 用模型，用來展示商業邏輯；實際數字仍需依打樣報價和通路條件修正。")
+    st.caption("Note: this is a pitch model that shows business logic. Actual numbers should be updated with prototype quotes and channel terms.")
 
     st.divider()
     section_label("Sensitivity")
-    st.header("評審可能追問的財務敏感度")
+    st.header("Financial Sensitivity Investors May Ask About")
     render_deep_table(
-        "三個會影響毛利的關鍵槓桿",
+        "Key Levers That Affect Margin",
         [
-            ("製造成本", "若從 NT$58 升到 NT$80，硬體毛利會明顯壓縮", "需要用設計簡化和模具攤提控制成本。"),
-            ("通路抽成", "校園店與百貨通路條件不同", "早期可用直售與租屋包合作保留毛利。"),
-            ("濾芯轉換", "訂閱率從 15% 到 40% 會改變 LTV", "透明收集倉和異味改善是推動回購的關鍵。"),
-            ("售價帶", "NT$129-199 是學生可接受區間", "比一次通管費低很多，心理上像買保險。"),
+            ("Manufacturing Cost", "If cost rises from NT$58 to NT$80, hardware margin compresses quickly", "Design simplification and mold amortization are needed to control cost."),
+            ("Channel Take Rate", "Campus shops and lifestyle retailers have different terms", "Early direct sales and starter-kit partnerships can preserve margin."),
+            ("Filter Conversion", "A 15% to 40% subscription rate changes LTV", "The clear chamber and odor improvement drive repeat purchases."),
+            ("Price Band", "NT$129-199 is a student-friendly range", "It feels like buying insurance because it is far cheaper than one plumbing repair."),
         ],
     )
 
-    st.subheader("可以帶到台上的一句財務說法")
-    st.info("我們不追求高單價硬體，而是用 NT$150 的低門檻進入學生租屋場景，再用濾芯和開學季組合包提高生命週期價值。")
+    st.subheader("One Financial Line for the Stage")
+    st.info("We are not chasing premium hardware pricing; we use an NT$150 entry point to enter student rentals, then increase lifetime value through filters and move-in bundles.")
 
 
 def page_pilot_strategy() -> None:
     render_css()
     section_label("Pilot Strategy")
-    st.title("從清大周邊開始的試點計畫")
-    render_motion_visual("pilot", "訪談、打樣、試點、開學季販售，90 天形成可驗證節奏。")
+    st.title("Pilot Plan Starting Around NTHU")
+    render_motion_visual("pilot", "Interviews, prototypes, pilot trials, and move-in launch create a testable 90-day rhythm.")
     st.markdown(
         """
-        競賽網站要讓評審相信你知道下一步怎麼做。這裡把產品驗證、校園通路和開學季銷售排成
-        90 天行動節奏。
+        A company site should make investors believe the team knows what happens next. This section turns product validation, campus channels, and move-in season into a 90-day action plan.
         """
     )
 
@@ -2174,34 +2173,34 @@ def page_pilot_strategy() -> None:
 
     st.divider()
     section_label("Channel Playbook")
-    st.header("通路打法")
+    st.header("Channel Playbook")
     cols = st.columns(3)
     with cols[0]:
-        card("01", "五金與百貨", "先讓產品出現在學生真的會買水管用品、衣架、延長線的地方。")
+        card("01", "Hardware and Lifestyle Retail", "Place the product where students already buy drain supplies, hangers, and extension cords.")
     with cols[1]:
-        card("02", "租屋包合作", "和床墊、垃圾桶、曬衣架一起進入新生開學採買清單。")
+        card("02", "Rental Starter Kits", "Bundle it with mattresses, trash bins, and drying racks during move-in shopping.")
     with cols[2]:
-        card("03", "宿舍共用廚房", "用多人場景快速累積油脂攔截案例，變成社群素材。")
+        card("03", "Dorm Shared Kitchens", "Use multi-user kitchens to generate grease-capture cases and social proof.")
 
     st.divider()
     section_label("Competitor Matrix")
-    st.header("競品與替代方案比較")
+    st.header("Competitors and Alternatives")
     render_competitor_matrix()
 
     st.divider()
     section_label("Pilot KPI")
-    st.header("試點要收集的 8 個指標")
+    st.header("Eight Pilot Metrics to Collect")
     render_deep_table(
-        "從試用回饋走向量產決策",
+        "From Trial Feedback to Production Decisions",
         [
-            ("適配率", "不同租屋水槽能否安裝", "低於 80% 就需要重新設計密封圈。"),
-            ("漏水率", "邊緣是否有水流繞過產品", "直接影響使用者信任。"),
-            ("每週攔截量", "透明收集倉實際累積油脂 ml", "證明產品不是心理安慰。"),
-            ("清理完成率", "使用者是否願意定期倒掉收集倉", "決定長期留存。"),
-            ("異味改善", "使用前後主觀評分", "是最容易被學生感受到的價值。"),
-            ("排水速度", "安裝後是否影響正常排水", "不能因為攔截油脂而造成新麻煩。"),
-            ("購買意願", "試用後願意支付價格", "驗證 NT$150 定價。"),
-            ("推薦意願", "是否願意推薦室友或同學", "決定校園口碑能否擴散。"),
+            ("Fit Rate", "Whether it fits different rental sinks", "Below 80% means the seal needs redesign."),
+            ("Leak Rate", "Whether water bypasses the product edge", "Directly affects user trust."),
+            ("Weekly capture volume", "Actual grease accumulated in the clear chamber (ml)", "Proves the product is not just psychological comfort."),
+            ("Cleaning Completion Rate", "Whether users will empty the chamber regularly", "Determines long-term retention."),
+            ("Odor Improvement", "Before-and-after user rating", "The value students feel fastest."),
+            ("Drainage Speed", "Whether normal drainage is affected after installation", "Grease capture cannot create a new hassle."),
+            ("Purchase Intent", "Willingness to pay after trial", "Validates the NT$150 price point."),
+            ("Referral Intent", "Whether users would recommend it to roommates or classmates", "Determines whether campus word-of-mouth can spread."),
         ],
     )
 
@@ -2209,30 +2208,30 @@ def page_pilot_strategy() -> None:
 def page_judge_room() -> None:
     render_css()
     section_label("Judge Room")
-    st.title("評審問答備戰室")
-    render_motion_visual("radar", "把問題、解法、商業、執行四個評分面向守住。")
-    st.markdown("把最可能被問到的問題先放進網站，讓提案看起來更成熟。")
+    st.title("Investor Q&A Room")
+    render_motion_visual("radar", "Defend the four scoring themes: problem, solution, business, and execution.")
+    st.markdown("Putting likely questions on the site makes the company story feel more mature.")
 
     faqs = [
         (
-            "為什麼學生會願意買？",
-            "因為它把一次 NT$1500 左右的通管焦慮，變成 NT$150 的預防型保險。學生不一定愛清潔，但很怕房東、押金和臭味。",
+            "Why would students buy it?",
+            "Because it turns a roughly NT$1,500 plumbing anxiety into a NT$150 preventive insurance product. Students may not love cleaning, but they do fear landlords, deposits, and odor.",
         ),
         (
-            "跟一般濾網差在哪？",
-            "濾網主要攔固體，油脂仍會隨水流進管線。這個產品把油脂導入透明收集倉，讓油脂被看見、被清掉。",
+            "How is it different from a normal strainer?",
+            "A normal strainer catches solids, while grease still flows into the pipe. This product guides grease into a clear chamber so it can be seen and removed.",
         ),
         (
-            "會不會很難清？",
-            "產品設計重點是可抽取收集盒，清理方式接近倒垃圾；如果清理仍太麻煩，學生就不會持續使用。",
+            "Is it hard to clean?",
+            "The design centers on a removable chamber that cleans like emptying trash. If cleaning feels hard, students will not keep using it.",
         ),
         (
-            "技術門檻在哪？",
-            "核心不是電子技術，而是小體積內的油水分流、密封適配、容量與清理手感。這些會決定能否真的進入租屋日常。",
+            "What is the technical barrier?",
+            "The core is not electronics; it is oil-water separation, seal fit, capacity, and cleaning feel in a small form factor. Those details decide whether it fits rental life.",
         ),
         (
-            "下一步驗證什麼？",
-            "先驗證三件事：不同落水頭適配率、實際油脂攔截量、學生清理意願。這三個數據會決定量產版本。",
+            "What do you validate next?",
+            "Validate three things first: drain fit rate, actual grease capture volume, and student willingness to clean. These data points define the production version.",
         ),
     ]
 
@@ -2242,38 +2241,37 @@ def page_judge_room() -> None:
 
     st.divider()
     section_label("Pitch Timer")
-    st.header("60 秒電梯簡報")
+    st.header("60-Second Elevator Pitch")
     script = """
-    外宿學生最怕的不是做家事，而是水管堵住後的房東壓力、通管費和整間房間的臭味。
-    Smart Grease-Trap Stopper 是一個專為學生租屋設計的油脂攔截水槽塞。
-    它不需要插電、不需要改管線，也不要求學生改變飲食，只要換上水槽塞，
-    就能把油脂留在透明收集倉，讓乾淨水流走。
-    我們用 NT$150 的低門檻，取代一次 NT$1500 的事後維修；
-    再透過校園五金、開學租屋包和濾芯訂閱建立回購。
-    這不是一個水槽小物，而是外宿生活品質的低成本防線。
+    Student renters are not afraid of chores as much as they are afraid of clogged pipes, landlord pressure, repair costs, and room-wide odor.
+    Clario Living's Smart Grease-Trap Stopper is a sink stopper designed for rental kitchens.
+    It requires no electricity, no pipe renovation, and no diet change: users simply swap the stopper.
+    Grease stays in the clear chamber while clean water drains away.
+    At an NT$150 entry price, we replace a painful NT$1,500 repair event with daily prevention.
+    Campus retail, move-in bundles, and filter refills turn a simple device into a repeatable living-care business.
     """
-    st.text_area("可直接練習的口說稿", script.strip(), height=190)
+    st.text_area("Practice Script", script.strip(), height=190)
 
     st.divider()
     section_label("Scoring Rubric")
-    st.header("回答時要守住的四條主線")
+    st.header("Four Themes to Defend")
     cols = st.columns(4)
     with cols[0]:
-        card("P", "痛點清楚", "不要只說堵塞，要說房東壓力、通管費、臭味和蟲害。")
+        card("P", "Clear Problem", "Do not just say clogging; talk about landlord pressure, plumbing cost, odor, and pests.")
     with cols[1]:
-        card("S", "解法簡單", "不改習慣、不改管線、不插電，只換水槽塞。")
+        card("S", "Simple Solution", "No behavior change, no pipe work, no electricity: just swap the stopper.")
     with cols[2]:
-        card("B", "商業低門檻", "NT$150 買排水保險，濾芯帶回購。")
+        card("B", "Low-Friction Business", "NT$150 buys drainage insurance; filters create repeat purchases.")
     with cols[3]:
-        card("E", "執行可驗證", "用 90 天試點拿適配率、攔截量、購買意願。")
+        card("E", "Verifiable Execution", "Use a 90-day pilot to measure fit rate, capture volume, and purchase intent.")
 
     render_deep_table(
-        "評審尖銳問題與防守方向",
+        "Hard Investor Questions and Defense Angles",
         [
-            ("油脂真的能攔多少？", "承認需要試點實測，先用 demo 模型展示假設", "誠實且有實驗計畫，比硬說有效更可信。"),
-            ("學生會清理嗎？", "透明收集倉加低沾手拆卸，並測清理完成率", "把行為問題變成產品設計問題。"),
-            ("會不會太小眾？", "從清大外宿生切入，再擴到青年租屋、小套房、共用廚房", "小場景可以是進入大市場的 wedge。"),
-            ("競品會不會很容易做？", "重點在通用適配、清理體驗、通路組合和濾芯回購", "不只是一個塑膠件，而是完整使用情境。"),
+            ("How much grease can it really capture?", "Acknowledge that pilot data is needed and use the demo model to show assumptions", "Honesty plus a test plan is more credible than overclaiming."),
+            ("Will students clean it?", "Use a clear chamber, low-touch removal, and measure cleaning completion rate", "Turn a behavior problem into a product design problem."),
+            ("Is the market too niche?", "Start with NTHU renters, then expand to young renters, studios, and shared kitchens", "A narrow use case can be the wedge into a larger market."),
+            ("Could competitors copy this easily?", "The edge is universal fit, cleaning experience, channel bundling, and filter refills", "It is not just a plastic part; it is a full use case."),
         ],
     )
 
@@ -2289,14 +2287,13 @@ def page_home() -> None:
         <div class="hero">
             <div class="hero-text">
                 <div class="eyebrow">Startup World Cup Pitch</div>
-                <h1>Smart Grease-Trap Stopper</h1>
-                <div class="subtitle">外宿族的排水守護者</div>
+                <h1>Clario Living</h1>
+                <div class="subtitle">Drain Protection for Rental Living</div>
                 <p>
-                    用一個可替換的水槽塞，在學生倒湯、洗鍋、清廚餘的日常瞬間，
-                    自動攔截油脂、減少惡臭，讓老舊租屋管線少一點崩潰。
+                    A replaceable sink stopper that captures grease during everyday rental-life moments, reducing odor and protecting old pipes from breakdowns.
                 </p>
             </div>
-            <img class="hero-product" src="{image_data_uri(PRODUCT_ILLUSTRATION_IMAGE)}" alt="Smart Grease-Trap Stopper 手繪產品圖">
+            <img class="hero-product" src="{image_data_uri(PRODUCT_ILLUSTRATION_IMAGE)}" alt="Clario Living hand-drawn product illustration">
         </div>
         """,
         unsafe_allow_html=True,
@@ -2304,19 +2301,19 @@ def page_home() -> None:
 
     st.write("")
     metric_cols = st.columns(3)
-    metric_cols[0].metric("目標入手價", "NT$150", "比一次通管低很多", border=True)
-    metric_cols[1].metric("電費與電池", "0", "純物理分流", border=True)
-    metric_cols[2].metric("清理時間", "3 min", "像倒垃圾一樣", border=True)
+    metric_cols[0].metric("Target Entry Price", "NT$150", "Far below one plumbing repair", border=True)
+    metric_cols[1].metric("Power and Batteries", "0", "Pure physical separation", border=True)
+    metric_cols[2].metric("Cleaning Time", "3 min", "As easy as emptying trash", border=True)
     render_signal_strip()
 
     st.markdown(
         """
         <div class="pill-row">
-            <span class="pill">租屋水槽</span>
-            <span class="pill">開學季剛需</span>
-            <span class="pill">低價硬體</span>
-            <span class="pill">可回購濾芯</span>
-            <span class="pill">免施工</span>
+            <span class="pill">Rental Sinks</span>
+            <span class="pill">Move-In Essential</span>
+            <span class="pill">Low-Cost Hardware</span>
+            <span class="pill">Refillable Filters</span>
+            <span class="pill">No Installation</span>
         </div>
         """,
         unsafe_allow_html=True,
@@ -2326,38 +2323,35 @@ def page_home() -> None:
     section_label("Self Check")
     left, right = st.columns([1.1, 1])
     with left:
-        st.header("先測你是不是高風險租屋水槽")
+        st.header("Check Whether Your Sink Is High Risk")
         st.markdown(
             """
-            這個網站不只展示產品，也讓評審一開始就能進入使用情境。
-            自我檢測會把「油膩外食、老舊管線、異味、維修成本」轉成可視化分數，
-            讓痛點更直覺。
+            This site does more than show the product. The self-check turns greasy takeout, old pipes, odor, and repair cost into a visible risk score.
             """
         )
         st.markdown(
             """
-            - 6 題快速判斷你的水槽是否已經開始積油
-            - 從日常倒湯、清理習慣到維修成本承受度
-            - 回答後立即得到「低 / 中 / 高風險」與行動建議
+            - Six quick questions to see whether your sink is already collecting grease
+            - Covers soup disposal, cleaning habits, and repair-cost tolerance
+            - Get low / medium / high risk feedback with practical next steps
             """
         )
         st.button(
-            "開始自我檢測",
+            "Start Self-Check",
             type="primary",
             on_click=start_checkup,
             use_container_width=True,
             key="start_checkup_button",
         )
-        st.info("點擊後會展開題目表單，回答完就能看到即時風險評分與建議。", icon="⚡")
+        st.info("Click to open the form and get an instant risk score with recommendations.", icon="⚡")
 
     with right:
         st.markdown(
             """
             <div class="card">
-                <h3>檢測設計</h3>
+                <h3>Check Design</h3>
                 <p class="muted">
-                    題目聚焦於倒油頻率、排水速度、異味、屋齡、清理意願與維修成本承受度。
-                    結果分成低、中、高風險，最後導回產品價值。
+                    Questions focus on oil disposal frequency, drainage speed, odor, building age, cleaning willingness, and repair-cost tolerance. Results map to low, medium, or high risk and connect back to product value.
                 </p>
             </div>
             """,
@@ -2370,35 +2364,35 @@ def page_home() -> None:
 
     st.divider()
     section_label("Pitch Map")
-    st.header("評審進站後 90 秒會看到什麼")
+    st.header("What Visitors See in the First 90 Seconds")
     cols = st.columns(4)
     with cols[0]:
-        card("1", "痛點立即共鳴", "先用自我檢測讓評審進入租屋水槽情境。")
+        card("1", "Immediate Problem Resonance", "Use the self-check to bring visitors into the rental-sink context.")
     with cols[1]:
-        card("2", "產品可視化", "用互動 demo 展示油脂如何被攔截。")
+        card("2", "Visible Product Logic", "Use an interactive demo to show how grease is captured.")
     with cols[2]:
-        card("3", "商業可試算", "價格、成本、滲透率都能調整，直接回答毛利問題。")
+        card("3", "Editable Business Model", "Price, cost, and penetration rate are adjustable to answer margin questions.")
     with cols[3]:
-        card("4", "落地有路線", "試點計畫、通路打法、評審 FAQ 全部放入網站。")
+        card("4", "Clear Execution Path", "Pilot plan, channel playbook, and FAQ are built into the site.")
 
     st.divider()
     section_label("Why Now")
-    st.header("為什麼現在適合做這個產品")
+    st.header("Why Now")
     cols = st.columns(3)
     with cols[0]:
-        card("A", "外食日常化", "學生生活高度依賴外食與外送，油膩湯汁和醬料成為水槽的日常負擔。")
+        card("A", "Takeout Is Daily Life", "Student life relies heavily on takeout and delivery, making greasy soup and sauces a daily sink burden.")
     with cols[1]:
-        card("B", "租屋成本壓力", "房租、押金與維修費讓學生更願意接受低價預防型工具，而不是事後補救。")
+        card("B", "Rental Cost Pressure", "Rent, deposits, and repair fees make students more open to low-cost prevention than after-the-fact fixes.")
     with cols[2]:
-        card("C", "開學季採購窗口", "新生搬家時會一次購買生活用品，是水槽塞進入租屋包的最佳時點。")
+        card("C", "Move-In Purchase Window", "When students move in, they buy household items together. That is the best time for a stopper to enter starter kits.")
 
     render_deep_table(
-        "網站如何對應 SWC Pitch 評分邏輯",
+        "How the Site Maps to Pitch Scoring",
         [
-            ("Problem", "自我檢測、情境圖、痛點卡片", "讓評審快速感到這是真實日常，不是硬湊題目。"),
-            ("Solution", "產品 demo、油脂流向、使用前後差異", "把看不見的油脂攔截變成可理解的互動體驗。"),
-            ("Business", "財務試算、通路打法、訂閱濾芯", "讓產品從小物件變成可規模化的商業模型。"),
-            ("Execution", "90 天試點、KPI、FAQ", "預先回答評審最在意的落地與風險問題。"),
+            ("Problem", "self-check, context visuals, problem cards", "Make visitors feel this is a real daily problem, not a forced topic."),
+            ("Solution", "product demo, grease flow, before-and-after comparison", "Turn invisible grease capture into an understandable interactive experience."),
+            ("Business", "financial calculator, channel playbook, filter subscriptions", "Turn a small object into a scalable business model."),
+            ("Execution", "90-day pilot, KPIs, FAQ", "Pre-answer the execution and risk questions visitors care about most."),
         ],
     )
 
@@ -2406,25 +2400,25 @@ def page_home() -> None:
 def page_problem() -> None:
     render_css()
     section_label("Problem")
-    st.title("學生租屋最尷尬的維修問題")
+    st.title("The Rental Maintenance Problem Students Dread")
     st.markdown(
-        "外宿學生不是不知道油會堵管線，而是租屋生活太小、太趕、太不想碰油污。"
+        "Student renters know grease can clog pipes; rental life is just small, rushed, and too unpleasant for greasy cleanup."
     )
-    render_motion_visual("problem", "油脂進入管線，冷卻、附著，最後變成阻塞與異味。")
+    render_motion_visual("problem", "Grease enters the pipe, cools, sticks, and eventually becomes clogging and odor.")
 
     cols = st.columns(3)
     with cols[0]:
-        card("01", "外食油膩", "火鍋、乾麵、炸物便當的殘餘湯汁直接進水槽，油脂冷卻後黏附管壁。")
+        card("01", "Greasy Takeout", "Hot-pot soup, noodle sauce, and fried-food residue go straight into the sink; once cooled, grease sticks to pipe walls.")
     with cols[1]:
-        card("02", "修繕困難", "老舊套房管線窄、轉角多，一旦堵住就要面對房東、室友與通管費。")
+        card("02", "Hard Repairs", "Old studio pipes are narrow and full of bends. Once clogged, students face landlords, roommates, and repair fees.")
     with cols[2]:
-        card("03", "衛生失控", "狹小空間裡，水管惡臭會迅速佔滿生活環境，並提高蟲害風險。")
+        card("03", "Hygiene Spillover", "In a small room, drain odor spreads quickly and increases pest risk.")
 
     st.write("")
     st.markdown(
         """
         <div class="quote">
-            真正的問題不是水槽堵住，而是學生沒有一個便宜、直覺、願意每天用的預防工具。
+            The real problem is not just a clogged sink; it is the lack of an affordable, intuitive prevention tool students will actually use every day.
         </div>
         """,
         unsafe_allow_html=True,
@@ -2432,24 +2426,24 @@ def page_problem() -> None:
 
     st.divider()
     section_label("Oil Journey")
-    st.header("一碗火鍋湯進水槽後會發生什麼")
+    st.header("What Happens After Hot-Pot Soup Enters the Sink")
     cols = st.columns(4)
     with cols[0]:
-        card("1", "熱湯倒入", "油脂在高溫下跟水一起流動，學生通常看不出立即風險。")
+        card("1", "Hot Soup Poured In", "Grease flows with water while hot, so the risk is not immediately visible.")
     with cols[1]:
-        card("2", "管線冷卻", "油脂溫度下降後變黏，開始附著在管壁、轉角與毛髮殘渣上。")
+        card("2", "Pipe Cools Down", "As temperature drops, grease becomes sticky and adheres to walls, bends, and trapped debris.")
     with cols[2]:
-        card("3", "流速下降", "殘渣堆積讓排水慢，異味開始從排水口反上來。")
+        card("3", "Flow Slows", "Buildup slows drainage and odor starts coming back through the drain.")
     with cols[3]:
-        card("4", "事後維修", "真正堵住後只能通管、聯絡房東或自行使用刺激性清潔劑。")
+        card("4", "Reactive Repair", "After a real clog, the options are plumbing service, landlord negotiation, or harsh chemicals.")
 
     render_deep_table(
-        "利害關係人痛點",
+        "Stakeholder Pain Points",
         [
-            ("學生", "臭味、蟲害、通管費、押金壓力", "使用者願意為低價預防付費。"),
-            ("房東", "維修溝通成本、老舊管線損耗", "可作為入住配件降低日後糾紛。"),
-            ("室友/共用廚房", "責任分散，沒人想清油污", "透明收集倉讓問題可見，促進共同清理。"),
-            ("校園周邊店家", "開學季生活用品需求集中", "容易和現有商品組合銷售。"),
+            ("Students", "odor, pests, plumbing fees, deposit pressure", "Users are willing to pay for low-cost prevention."),
+            ("Landlords", "repair coordination cost and aging pipe damage", "Can be offered as a move-in accessory to reduce disputes."),
+            ("Roommates / Shared Kitchens", "Diffuse responsibility; nobody wants to clean grease", "The clear chamber makes the problem visible and encourages shared cleaning."),
+            ("Campus-Area Retailers", "High demand for household goods during move-in season", "Easy to bundle with existing products."),
         ],
     )
 
@@ -2457,9 +2451,9 @@ def page_problem() -> None:
 def page_solution() -> None:
     render_css()
     section_label("Solution")
-    st.title("懶人式油脂攔截系統")
+    st.title("Low-Effort Grease Capture System")
     st.markdown(
-        "不改管線、不插電、不要求學生先分類湯汁。只要更換水槽塞，就能把油脂導入透明收集倉。"
+        "No pipe work, no electricity, and no need to pre-sort soup. Swap the stopper and guide grease into a clear chamber."
     )
     render_signal_strip()
 
@@ -2467,48 +2461,48 @@ def page_solution() -> None:
     with left:
         render_product_demo()
     with right:
-        st.subheader("核心流程")
+        st.subheader("Core Flow")
         st.markdown(
             """
-            1. 倒入含油湯汁或清洗油膩碗盤  
-            2. 導流結構延長油水停留時間  
-            3. 油脂留在透明收集倉，水流繼續排出  
-            4. 收集盒取出後直接清理，不徒手接觸油污
+            1. Pour oily soup or wash greasy dishes  
+            2. The guide structure extends oil-water dwell time  
+            3. Grease stays in the clear chamber while water drains  
+            4. Remove and empty the chamber without touching grease
             """
         )
-        st.info("Pitch 重點：我們不是改變學生飲食，而是降低學生做對事情的門檻。")
+        st.info("Key point: we are not changing student diets; we are lowering the effort required to do the right thing.")
 
-        st.subheader("使用前後差異")
+        st.subheader("Before and After")
         st.markdown(
             """
-            | 情境 | 沒有產品 | 使用後 |
+            | Situation | Without Product | After Use |
             |---|---|---|
-            | 倒火鍋湯 | 油脂進管線冷卻黏附 | 油脂停留在收集倉 |
-            | 排水變慢 | 只能等堵塞後通管 | 先把累積源頭減少 |
-            | 惡臭 | 住處小，臭味擴散快 | 降低油脂腐敗殘留 |
+            | Hot-pot soup | Grease enters pipes, cools, and sticks | Grease stays in the chamber |
+            | Slow Drainage | Users wait until clogging requires repair | Reduce buildup at the source |
+            | Odor | Small rooms spread odor quickly | Reduce rancid grease residue |
             """
         )
 
     st.divider()
     section_label("Install Flow")
-    st.header("30 秒安裝流程")
+    st.header("30-Second Installation")
     cols = st.columns(4)
     with cols[0]:
-        card("01", "取下原水槽塞", "不需要工具，不拆管線，只處理水槽上方可接觸部位。")
+        card("01", "Remove the Old Stopper", "No tools or pipe work; only touch the accessible top of the sink.")
     with cols[1]:
-        card("02", "壓入密封圈", "彈性密封圈貼合常見落水頭，避免水流從邊緣漏過。")
+        card("02", "Press In the Seal Ring", "A flexible seal fits common drains and prevents bypass flow.")
     with cols[2]:
-        card("03", "扣上收集倉", "透明盒朝向使用者，讓油脂累積狀態可被看見。")
+        card("03", "Attach the Chamber", "Face the clear chamber toward the user so grease buildup is visible.")
     with cols[3]:
-        card("04", "倒掉收集物", "收集倉滿了就拆下清理，濾芯可每月更換。")
+        card("04", "Empty the Capture", "Detach and clean the chamber when full; filters can be replaced monthly.")
 
     render_deep_table(
-        "產品設計要處理的真實情境",
+        "Real Use Cases the Design Must Handle",
         [
-            ("熱湯", "耐熱 PP 與可替換濾芯需承受短時間高溫", "避免學生倒火鍋湯時變形或異味。"),
-            ("小水槽", "本體高度不能影響洗碗和放鍋", "租屋處空間很小，產品不能變成阻礙。"),
-            ("懶人清理", "收集盒要可單手取出、少沾手", "清理門檻決定留存率。"),
-            ("尺寸差異", "密封圈需涵蓋常見廉價落水頭", "通用性決定第一波校園通路是否能賣。"),
+            ("Hot Soup", "Heat-resistant PP and replaceable filters must tolerate short high-temperature exposure", "Prevents deformation or odor when students pour hot soup."),
+            ("Small Sinks", "The body height cannot block dishwashing or cookware", "Rental kitchens are small; the product cannot become an obstacle."),
+            ("Low-Effort Cleaning", "The chamber must be removable with one hand and minimal contact", "Cleaning friction determines retention."),
+            ("Size Variation", "The seal must cover common low-cost drain sizes", "Universality determines whether the first campus channels can sell it."),
         ],
     )
 
@@ -2516,34 +2510,34 @@ def page_solution() -> None:
 def page_product() -> None:
     render_css()
     section_label("Product")
-    st.title("為學生優化的實體構造")
-    render_motion_visual("product", "四個核心零件：密封、導流、收集、濾芯。")
+    st.title("Physical Design Optimized for Students")
+    render_motion_visual("product", "Four core parts: seal, guide, chamber, and filter.")
 
     cols = st.columns(3)
     with cols[0]:
-        card("A", "通用接口", "彈性密封圈適配租屋處常見廉價落水頭，不需改裝原有設備。")
+        card("A", "Universal Interface", "A flexible seal fits common rental drains without modifying existing hardware.")
     with cols[1]:
-        card("B", "透明收集倉", "看得見油脂被攔截，降低忘記清理的機率，也讓效果一眼可懂。")
+        card("B", "Clear Collection Chamber", "Visible grease capture reduces forgotten cleaning and makes the effect obvious.")
     with cols[2]:
-        card("C", "簡易清理", "收集盒可快速取出，像倒垃圾一樣處理，不需要徒手接觸油污。")
+        card("C", "Easy Cleaning", "The chamber can be removed quickly and emptied like trash, without touching grease.")
 
     st.divider()
     section_label("Underlying Magic")
-    st.header("純物理分流，零電費、低故障率")
+    st.header("Pure Physical Separation, No Power, Low Failure Risk")
 
     cols = st.columns(3)
-    cols[0].metric("Gravity", "油水比重差", "自然分層", border=True)
-    cols[1].metric("Centrifugal Flow", "導流停留", "提高攔截", border=True)
-    cols[2].metric("Industrial PP", "耐熱耐酸鹼", "量產友善", border=True)
+    cols[0].metric("Gravity", "Oil-water density difference", "natural layering", border=True)
+    cols[1].metric("Centrifugal Flow", "guided dwell time", "improves capture", border=True)
+    cols[2].metric("Industrial PP", "heat and chemical resistant", "manufacturing friendly", border=True)
 
     st.markdown(
         """
         <div class="pill-row">
-            <span class="pill">零電費</span>
-            <span class="pill">零電池</span>
-            <span class="pill">低故障率</span>
-            <span class="pill">目標售價 NT$150</span>
-            <span class="pill">可搭配可分解濾芯</span>
+            <span class="pill">No electricity</span>
+            <span class="pill">No batteries</span>
+            <span class="pill">Low failure risk</span>
+            <span class="pill">Target price NT$150</span>
+            <span class="pill">Compatible with compostable filters</span>
         </div>
         """,
         unsafe_allow_html=True,
@@ -2551,132 +2545,131 @@ def page_product() -> None:
 
     st.divider()
     section_label("Design Details")
-    st.header("量產前要驗證的 4 個設計參數")
+    st.header("Four Design Parameters to Validate Before Production")
     cols = st.columns(4)
-    cols[0].metric("密封圈外徑", "32-45 mm", "租屋落水頭", border=True)
-    cols[1].metric("收集倉容量", "80-120 ml", "一週清理", border=True)
-    cols[2].metric("耐熱溫度", "90°C", "熱湯情境", border=True)
-    cols[3].metric("拆洗動作", "< 3 min", "降低抗拒", border=True)
+    cols[0].metric("Seal outer diameter", "32-45 mm", "rental drains", border=True)
+    cols[1].metric("Chamber capacity", "80-120 ml", "weekly cleaning", border=True)
+    cols[2].metric("Heat tolerance", "90°C", "hot soup use case", border=True)
+    cols[3].metric("Cleaning motion", "< 3 min", "lower friction", border=True)
 
     st.divider()
     section_label("BOM Concept")
-    st.header("初版量產構成")
+    st.header("First Production Configuration")
     render_deep_table(
-        "BOM 與設計理由",
+        "BOM and Design Rationale",
         [
-            ("上蓋濾網", "攔截固體菜渣、麵條、飯粒", "避免固體物進入分流倉，降低卡住風險。"),
-            ("導流葉片", "讓含油水流形成旋轉與停留", "增加油水分離時間，是核心物理設計。"),
-            ("透明收集倉", "可視化油脂累積，可拆卸", "讓效果可被看見，也提醒使用者清理。"),
-            ("矽膠密封圈", "彈性適配不同落水頭", "解決租屋處設備規格不一致。"),
-            ("濾芯包", "可分解油脂吸附材料", "建立每月低價回購與清新維護。"),
+            ("Top Strainer", "Catches vegetable scraps, noodles, and rice", "Keeps solids out of the separation chamber and reduces jamming."),
+            ("Flow Guide Vanes", "Creates rotation and dwell time in oily water", "Increases oil-water separation time, the core physical mechanism."),
+            ("Clear Collection Chamber", "Visual grease buildup, removable", "Makes the effect visible and reminds users to clean."),
+            ("Silicone Seal Ring", "Flexibly fits different drain heads", "Solves inconsistent rental sink hardware."),
+            ("Filter Pack", "Compostable grease-absorbing material", "Creates monthly low-cost refills and freshness maintenance."),
         ],
     )
 
-    st.subheader("MVP 測試版本")
+    st.subheader("MVP Test Versions")
     cols = st.columns(3)
     with cols[0]:
-        card("V1", "3D 列印外殼", "快速驗證尺寸、清理手感和水流方向。")
+        card("V1", "3D-Printed Shell", "Quickly validates dimensions, cleaning feel, and flow direction.")
     with cols[1]:
-        card("V2", "矽膠圈套件", "測試不同水槽落水頭的適配率與漏水問題。")
+        card("V2", "Silicone Ring Kit", "Tests fit rate and leakage across different sink drains.")
     with cols[2]:
-        card("V3", "小批量射出", "進入 20-50 組校園試點，收集真實油脂量。")
+        card("V3", "Small-Batch Injection", "Enters a 20-50 unit campus pilot and collects real grease data.")
 
 
 def page_market() -> None:
     render_css()
     section_label("Market Opportunity")
-    st.title("百萬外宿學生與青年，都需要一份排水保險")
-    render_motion_visual("market", "從清大周邊外宿生開始，向青年租屋與共用廚房擴散。")
+    st.title("Millions of Student and Young Renters Need Drainage Insurance")
+    render_motion_visual("market", "Start with NTHU-area renters, then expand to young renters and shared kitchens.")
 
     left, right = st.columns([1.1, 1])
     with left:
         st.markdown(
             """
-            在老舊建築、低預算租屋與高頻率外食交會的場景中，
-            Smart Grease-Trap Stopper 把昂貴維修變成低價預防。
+            In older buildings, low-budget rentals, and high-takeout routines, Clario Living turns expensive repairs into low-cost prevention.
             """
         )
         st.markdown(
             """
             <div class="card">
                 <div class="big-number">10x</div>
-                <p class="muted">一次通管費約等於十個預防型水槽塞。學生更願意花 NT$150 買一份排水保險。</p>
+                <p class="muted">One plumbing repair costs about ten preventive stoppers. Students are more willing to spend NT$150 on drainage insurance.</p>
             </div>
             """,
             unsafe_allow_html=True,
         )
 
     with right:
-        st.metric("潛在客群", "100萬+", "外宿學生與青年", border=True)
-        st.metric("常見租屋屋齡", "20年+", "管線老化風險", border=True)
-        st.metric("濾芯訂閱", "< NT$20/月", "提高回購", border=True)
+        st.metric("Potential Audience", "1M+", "student and young renters", border=True)
+        st.metric("Common rental age", "20+ years", "aging-pipe risk", border=True)
+        st.metric("Filter subscription", "< NT$20/month", "repeat purchase driver", border=True)
 
     st.divider()
     section_label("Business Model")
-    st.header("從開學季切入，讓耗材帶動回購")
+    st.header("Enter Through Move-In Season, Then Drive Refills")
     cols = st.columns(3)
     with cols[0]:
-        card("Launch", "校園周邊通路", "五金行、文具店、小北百貨與宿舍生活用品店。")
+        card("Launch", "Campus-Area Retail", "Hardware stores, stationery shops, lifestyle retailers, and dorm supply stores.")
     with cols[1]:
-        card("Bundle", "新生租屋包", "與床墊、衣架、延長線一起成為入住第一批採買。")
+        card("Bundle", "Student Renter Starter Kit", "Bundled with mattresses, hangers, and extension cords in the first move-in purchase.")
     with cols[2]:
-        card("Recurring", "訂閱濾芯", "可分解油脂吸附包，每月不到 20 元維持清新。")
+        card("Recurring", "Filter Subscription", "Compostable grease-absorbing packs keep the sink fresh for under NT$20 per month.")
 
     st.divider()
     section_label("Go-To-Market Detail")
-    st.header("三階段上市打法")
+    st.header("Three-Stage Go-To-Market")
     render_deep_table(
-        "通路與轉換策略",
+        "Channel and Conversion Strategy",
         [
-            ("校園驗證", "清大周邊租屋學生、宿舍共用廚房、小套房", "先在最熟悉的場景拿到案例與推薦。"),
-            ("開學套組", "與床墊、衣架、延長線、垃圾桶一起包裝", "搬家時學生最願意一次買齊生活用品。"),
-            ("生活百貨", "五金行、小北百貨、校園附近文具生活店", "產品不需教育太久，適合衝動型低價購買。"),
-            ("濾芯回購", "QR code 導到月配濾芯或校園店取貨", "讓低價硬體連到持續收益。"),
+            ("Campus Validation", "NTHU-area student rentals, dorm shared kitchens, and small studios", "Start in the most familiar context to collect cases and referrals."),
+            ("Move-In Kit", "Bundle with mattresses, hangers, extension cords, and trash bins", "Students are most willing to buy household essentials during move-in."),
+            ("Lifestyle Retail", "Hardware stores, lifestyle retailers, and campus-area stationery shops", "The product is easy to understand and fits impulse low-price purchases."),
+            ("Filter Refill", "QR code leads to monthly filter delivery or campus pickup", "Connects low-cost hardware to recurring revenue."),
         ],
     )
 
     st.divider()
     section_label("Adoption Funnel")
-    st.header("從看見臭味問題到回購濾芯")
+    st.header("From Odor Awareness to Filter Refills")
     funnel_cols = st.columns(5)
-    funnel_cols[0].metric("觸及", "校園社群", "短影音/租屋包", border=True)
-    funnel_cols[1].metric("理解", "自我檢測", "痛點量化", border=True)
-    funnel_cols[2].metric("購買", "NT$150", "低決策成本", border=True)
-    funnel_cols[3].metric("持續", "透明收集", "提醒清理", border=True)
-    funnel_cols[4].metric("回購", "濾芯", "每月低額", border=True)
+    funnel_cols[0].metric("Reach", "Campus social", "short videos / starter kits", border=True)
+    funnel_cols[1].metric("Understand", "self-check", "quantified pain", border=True)
+    funnel_cols[2].metric("Purchase", "NT$150", "low decision cost", border=True)
+    funnel_cols[3].metric("Continue", "visible capture", "cleaning reminder", border=True)
+    funnel_cols[4].metric("Refill", "filters", "low monthly cost", border=True)
 
 
 def page_team_pitch() -> None:
     render_css()
     section_label("Team")
-    st.title("清大計財碩一團隊")
+    st.title("Clario Living Team")
 
     identity_options = {
-        "正式 Pitch": {
-            "tagline": "用財務邏輯與學生洞察做硬體產品。",
-            "focus": "適合放在比賽現場或對外提案，呈現專業、穩定、可信任的團隊形象。",
-            "badges": ["成本模型", "商業簡報", "產品驗證"],
+        "Formal Pitch": {
+            "tagline": "Building hardware with financial discipline and student insight.",
+            "focus": "Best for investor-facing moments: professional, stable, and credible.",
+            "badges": ["Cost Model", "Business Story", "Product Validation"],
         },
-        "校園訪談": {
-            "tagline": "從清大周邊租屋現場找痛點。",
-            "focus": "強調我們真的理解外宿族日常，能把訪談、使用情境和通路假設連起來。",
-            "badges": ["外宿洞察", "使用者訪談", "開學季通路"],
+        "Campus Interviews": {
+            "tagline": "Finding the problem in real NTHU-area rental kitchens.",
+            "focus": "Shows that the team understands rental life and can connect interviews, use cases, and channel assumptions.",
+            "badges": ["Renter Insight", "User Interviews", "Move-In Channel"],
         },
-        "產品實驗": {
-            "tagline": "把水槽阻塞問題變成可測的產品假設。",
-            "focus": "適合說明打樣、適配率、清理手感與油脂攔截量，讓評審看到執行路線。",
-            "badges": ["MVP 打樣", "油脂攔截", "90 天試點"],
+        "Product Experiment": {
+            "tagline": "Turning sink clogging into testable product assumptions.",
+            "focus": "Best for discussing prototypes, fit rate, cleaning feel, and grease capture volume.",
+            "badges": ["MVP Prototype", "Grease Capture", "90-Day Pilot"],
         },
-        "財務分析": {
-            "tagline": "用計財背景守住定價、毛利與回購。",
-            "focus": "凸顯團隊能把 NT$150 低價硬體做成可持續商業模型，而不是只停在創意。",
-            "badges": ["單位經濟", "濾芯回購", "損益平衡"],
+        "Financial Analysis": {
+            "tagline": "Using finance training to defend pricing, margin, and refills.",
+            "focus": "Shows the team can turn NT$150 low-cost hardware into a sustainable business model.",
+            "badges": ["Unit Economics", "Filter Refill", "Break-Even"],
         },
     }
     selected_identity = st.segmented_control(
-        "切換團隊形象",
+        "Switch team angle",
         list(identity_options.keys()),
-        default="正式 Pitch",
+        default="Formal Pitch",
         label_visibility="collapsed",
     )
     identity = identity_options[selected_identity]
@@ -2685,7 +2678,7 @@ def page_team_pitch() -> None:
     with left:
         st.image(
             TEAM_ILLUSTRATION_IMAGE,
-            caption="團隊形象插畫：廖怡絜、曾楷芸、邱芷凡",
+            caption="Team illustration: Yi-Chieh Liao, Kai-Yun Tseng, Chih-Fan Chiou",
             use_container_width=True,
         )
     with right:
@@ -2703,18 +2696,17 @@ def page_team_pitch() -> None:
             unsafe_allow_html=True,
         )
 
-    render_motion_visual("team", "核心團隊：CEO / CFO / CMO 分工")
+    render_motion_visual("team", "Core Team: CEO / CFO / CMO Roles")
     st.markdown(
         """
-        我們是清大計財碩一學生：廖怡絜、曾楷芸、邱芷凡。團隊把外宿生活的真實痛點，
-        轉成可以被驗證的產品設計、成本模型與校園試點策略。
+        We are an NTHU finance team: Yi-Chieh Liao, Kai-Yun Tseng, and Chih-Fan Chiou. We turn the real pain of rental living into product design, cost models, and campus pilot strategy.
         """
     )
 
     st.markdown(
         """
         <div class="quote">
-            我們不只是在賣一個水槽塞，我們是在保護學生的居住人權與生活品質。
+            We are not just selling a sink stopper; we are protecting dignity and quality of life in rental living.
         </div>
         """,
         unsafe_allow_html=True,
@@ -2722,47 +2714,42 @@ def page_team_pitch() -> None:
 
     st.divider()
     section_label("Speaking Notes")
-    st.header("30 秒結尾口說")
+    st.header("30-Second Closing Script")
     st.markdown(
         """
-        大家好，我們是清大計財碩一團隊，成員是廖怡絜、曾楷芸、邱芷凡。
-        外宿生活裡，水管阻塞和惡臭不是小事，
-        它會直接影響學生的房間、預算與居住尊嚴。
-        Smart Grease-Trap Stopper 用一個低成本、零電力、容易清理的水槽塞，
-        把昂貴的事後維修變成日常預防。讓我們一起用科技，
-        讓外宿生活不再有負擔。
+        We are Clario Living, an NTHU student-founded team by Yi-Chieh Liao, Kai-Yun Tseng, and Chih-Fan Chiou. In rental life, clogged pipes and odor are not small problems; they affect a student’s room, budget, and dignity. Our low-cost, zero-power, easy-clean stopper turns expensive reactive repair into everyday prevention.
         """
     )
 
     st.divider()
     section_label("Team Advantage")
-    st.header("團隊優勢怎麼講")
+    st.header("How to Explain the Team Advantage")
     render_deep_table(
-        "把背景轉成執行力",
+        "Turning Background Into Execution",
         [
-            ("廖怡絜", "CEO：整體戰略與產品願景", "負責供應鏈整合與量產規劃。"),
-            ("曾楷芸", "CFO：財務預測與資金調度", "確保 18 個月內達成損益兩平目標。"),
-            ("邱芷凡", "CMO：市場定位與品牌拓展", "主導 B2B 物業合作與 B2C 品牌拓展，推動「無痛升級」策略。"),
-            ("計財背景", "用數據、成本與風險思維管理硬體試點", "避免只停留在創意，能往量產與銷售推進。"),
+            ("Yi-Chieh Liao", "CEO: Company strategy and product vision", "Leads supply-chain integration and production planning."),
+            ("Kai-Yun Tseng", "CFO: Financial planning and capital allocation", "Owns the 18-month break-even plan."),
+            ("Chih-Fan Chiou", "CMO: Market positioning and brand growth", "Leads B2B property partnerships and B2C brand growth through a painless-upgrade strategy."),
+            ("Finance Background", "Uses data, cost, and risk thinking to manage a hardware pilot", "Keeps the project moving beyond an idea toward production and sales."),
         ],
     )
 
-    st.subheader("15 秒團隊介紹")
-    st.success("我們是清大計財碩一廖怡絜、曾楷芸、邱芷凡。外宿生活讓我們看見水槽阻塞的真實痛點，計財訓練則讓我們能用成本、毛利與試點數據判斷這個產品能不能真的活下來。")
+    st.subheader("15-Second Team Intro")
+    st.success("We are Yi-Chieh Liao, Kai-Yun Tseng, and Chih-Fan Chiou from NTHU finance. Rental living showed us the real sink-clogging problem, and our finance training helps us judge whether this product can survive through cost, margin, and pilot data.")
 
 
 def page_deck() -> None:
     render_css()
     section_label("Reference Deck")
-    st.title("競賽規則與原始提案簡報")
-    render_motion_visual("deck", "把原始簡報轉成可互動、可展示、可試算的網站版本。")
+    st.title("Reference Deck and Competition Rules")
+    render_motion_visual("deck", "Turning the original deck into an interactive, demo-ready, calculator-enabled site.")
 
     left, right = st.columns(2)
     with left:
         st.image(RULES_IMAGE, caption="Startup World Cup Pitch Deck Outline 2025")
         if RULES_PDF.exists():
             st.download_button(
-                "下載 SWC 規則 PDF",
+                "Download SWC Rules PDF",
                 data=RULES_PDF.read_bytes(),
                 file_name=RULES_PDF.name,
                 mime="application/pdf",
@@ -2772,7 +2759,7 @@ def page_deck() -> None:
         st.image(PROPOSAL_IMAGE, caption="Smart Grease Trap Revolution")
         if PROPOSAL_PDF.exists():
             st.download_button(
-                "下載原始提案 PDF",
+                "Download Original Proposal PDF",
                 data=PROPOSAL_PDF.read_bytes(),
                 file_name=PROPOSAL_PDF.name,
                 mime="application/pdf",
@@ -2781,25 +2768,25 @@ def page_deck() -> None:
 
     st.divider()
     section_label("Image Credits")
-    st.header("網站使用的網路圖片來源")
+    st.header("Web Image Sources Used on This Site")
     st.markdown(
         """
-        - 小套房水槽情境圖：Pexels，Max Vakhtbovycn，Kitchen counter with sink in small apartment
-        - 髒碗水槽情境圖：Unsplash，Devon MacKay，A kitchen sink filled with dishes next to a window
-        - 排水口近照：Unsplash，Daniel Dan，A close up of a metal sink drain
+        - Small studio sink context image:Pexels, Max Vakhtbovycn, Kitchen counter with sink in small apartment
+        - Dirty dish sink context image:Unsplash, Devon MacKay, A kitchen sink filled with dishes next to a window
+        - Drain close-up:Unsplash, Daniel Dan, A close up of a metal sink drain
         """
     )
 
 
 def sidebar_intro() -> None:
-    st.sidebar.markdown("## Smart Grease-Trap Stopper")
-    st.sidebar.caption("外宿族的排水守護者")
+    st.sidebar.markdown("## Clario Living")
+    st.sidebar.caption("Drain Protection for Rental Living")
     st.sidebar.markdown("---")
     st.sidebar.markdown(
         """
-        **網站目錄**
+        **Site Menu**
 
-        左側可切換各分頁；首頁提供自我檢測，其他頁面對應 SWC pitch deck 的關鍵章節。
+        Use the left navigation to switch pages. The homepage includes a self-check; the other pages map to key pitch-deck sections.
         """
     )
 
@@ -2807,28 +2794,28 @@ def sidebar_intro() -> None:
 sidebar_intro()
 
 pages = {
-    "Pitch Website": [
-        st.Page(page_home, title="首頁與自我檢測", url_path="", default=True),
-        st.Page(page_problem, title="問題", url_path="problem"),
-        st.Page(page_solution, title="解決方案", url_path="solution"),
-        st.Page(page_product, title="產品與技術", url_path="product"),
-        st.Page(page_demo_lab, title="互動實驗室", url_path="demo-lab"),
-        st.Page(page_market, title="市場與商業模式", url_path="market"),
-        st.Page(page_financials, title="財務試算", url_path="financials"),
-        st.Page(page_pilot_strategy, title="試點策略", url_path="pilot"),
-        st.Page(page_team_pitch, title="團隊與結語", url_path="team"),
-        st.Page(page_judge_room, title="評審問答", url_path="judge-room"),
-        st.Page(page_deck, title="原始簡報與規則", url_path="deck"),
-        st.Page(page_problem, title="問題", url_path="page_problem", visibility="hidden"),
-        st.Page(page_solution, title="解決方案", url_path="page_solution", visibility="hidden"),
-        st.Page(page_product, title="產品與技術", url_path="page_product", visibility="hidden"),
-        st.Page(page_demo_lab, title="互動實驗室", url_path="page_demo_lab", visibility="hidden"),
-        st.Page(page_market, title="市場與商業模式", url_path="page_market", visibility="hidden"),
-        st.Page(page_financials, title="財務試算", url_path="page_financials", visibility="hidden"),
-        st.Page(page_pilot_strategy, title="試點策略", url_path="page_pilot_strategy", visibility="hidden"),
-        st.Page(page_team_pitch, title="團隊與結語", url_path="page_team_pitch", visibility="hidden"),
-        st.Page(page_judge_room, title="評審問答", url_path="page_judge_room", visibility="hidden"),
-        st.Page(page_deck, title="原始簡報與規則", url_path="page_deck", visibility="hidden"),
+    "Clario Living": [
+        st.Page(page_home, title="Home and Self-Check", url_path="", default=True),
+        st.Page(page_problem, title="Problem", url_path="problem"),
+        st.Page(page_solution, title="Solution", url_path="solution"),
+        st.Page(page_product, title="Product and Technology", url_path="product"),
+        st.Page(page_demo_lab, title="Interactive Lab", url_path="demo-lab"),
+        st.Page(page_market, title="Market and Business Model", url_path="market"),
+        st.Page(page_financials, title="Financial Calculator", url_path="financials"),
+        st.Page(page_pilot_strategy, title="Pilot Strategy", url_path="pilot"),
+        st.Page(page_team_pitch, title="Team and Closing", url_path="team"),
+        st.Page(page_judge_room, title="Investor Q&A", url_path="judge-room"),
+        st.Page(page_deck, title="Deck and Rules", url_path="deck"),
+        st.Page(page_problem, title="Problem", url_path="page_problem", visibility="hidden"),
+        st.Page(page_solution, title="Solution", url_path="page_solution", visibility="hidden"),
+        st.Page(page_product, title="Product and Technology", url_path="page_product", visibility="hidden"),
+        st.Page(page_demo_lab, title="Interactive Lab", url_path="page_demo_lab", visibility="hidden"),
+        st.Page(page_market, title="Market and Business Model", url_path="page_market", visibility="hidden"),
+        st.Page(page_financials, title="Financial Calculator", url_path="page_financials", visibility="hidden"),
+        st.Page(page_pilot_strategy, title="Pilot Strategy", url_path="page_pilot_strategy", visibility="hidden"),
+        st.Page(page_team_pitch, title="Team and Closing", url_path="page_team_pitch", visibility="hidden"),
+        st.Page(page_judge_room, title="Investor Q&A", url_path="page_judge_room", visibility="hidden"),
+        st.Page(page_deck, title="Deck and Rules", url_path="page_deck", visibility="hidden"),
     ]
 }
 
