@@ -2804,8 +2804,6 @@ pages = {
         st.Page(page_financials, title="Financial Calculator", url_path="financials"),
         st.Page(page_pilot_strategy, title="Pilot Strategy", url_path="pilot"),
         st.Page(page_team_pitch, title="Team and Closing", url_path="team"),
-        st.Page(page_judge_room, title="Investor Q&A", url_path="judge-room"),
-        st.Page(page_deck, title="Deck and Rules", url_path="deck"),
         st.Page(page_problem, title="Problem", url_path="page_problem", visibility="hidden"),
         st.Page(page_solution, title="Solution", url_path="page_solution", visibility="hidden"),
         st.Page(page_product, title="Product and Technology", url_path="page_product", visibility="hidden"),
