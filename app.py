@@ -2622,7 +2622,11 @@ def page_team_pitch() -> None:
 
     left, right = st.columns([1.05, 1])
     with left:
-        render_team_photo_grid()
+        st.image(
+            TEAM_ILLUSTRATION_IMAGE,
+            caption="團隊形象插畫：廖怡絜、曾楷芸、邱芷凡",
+            use_container_width=True,
+        )
     with right:
         st.markdown(
             f"""
@@ -2638,12 +2642,7 @@ def page_team_pitch() -> None:
             unsafe_allow_html=True,
         )
 
-    st.subheader("工作分配")
-    st.image(
-        WORK_ASSIGNMENT_IMAGE,
-        caption="核心團隊工作分配：CEO / CFO / CMO",
-        use_container_width=True,
-    )
+    render_motion_visual("team", "核心團隊：CEO / CFO / CMO 分工")
     st.markdown(
         """
         我們是清大計財碩一學生：廖怡絜、曾楷芸、邱芷凡。團隊把外宿生活的真實痛點，
