@@ -12,10 +12,10 @@ DRAIN_IMAGE = BASE_DIR / "assets" / "drain-closeup.jpg"
 APARTMENT_SINK_IMAGE = BASE_DIR / "assets" / "apartment-sink.jpg"
 TEAM_ILLUSTRATION_IMAGE = BASE_DIR / "assets" / "team-illustration.png"
 TEAM_MEMBERS_REDRAWN_IMAGE = BASE_DIR / "assets" / "team-members-redrawn.png"
+PRODUCT_ILLUSTRATION_IMAGE = BASE_DIR / "assets" / "product-illustration.png"
 LIAO_IMAGE = BASE_DIR / "廖怡絜.JPG"
 TSENG_IMAGE = BASE_DIR / "曾楷芸.JPG"
 CHIOU_IMAGE = BASE_DIR / "邱芷凡.JPG"
-WORK_ASSIGNMENT_IMAGE = BASE_DIR / "IMG_1139.jpg"
 RULES_PDF = BASE_DIR / "612483020334563589_Startup World Cup Pitch Deck Outline_ 2025.pdf"
 PROPOSAL_PDF = BASE_DIR / "612513577919578249_Smart_Grease_Trap_Revolution_(4).pdf"
 
@@ -42,7 +42,9 @@ CUSTOM_CSS = """
     }
 
     .stApp {
-        background: var(--paper);
+        background:
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='240' viewBox='0 0 360 240'%3E%3Cg fill='none' stroke='%2378a083' stroke-width='2' stroke-linecap='round' opacity='.16'%3E%3Cpath d='M24 38c38-28 86-20 121 4 47 32 83 31 128-5'/%3E%3Cpath d='M42 181c45 20 86 18 124-8 40-27 79-30 124-7'/%3E%3Cpath d='M298 61c20 15 21 42 1 56-17 12-41 3-46-17-6-24 21-49 45-39z'/%3E%3Cpath d='M80 91c11 8 12 23 1 31-10 7-24 2-27-10-3-13 12-27 26-21z'/%3E%3C/g%3E%3Cg fill='%23f0b45c' opacity='.18'%3E%3Ccircle cx='304' cy='181' r='5'/%3E%3Ccircle cx='53' cy='134' r='4'/%3E%3Ccircle cx='215' cy='54' r='3'/%3E%3C/g%3E%3C/svg%3E"),
+            var(--paper);
         color: var(--ink);
         font-family: "Noto Sans TC", "Inter", system-ui, sans-serif;
     }
@@ -66,13 +68,14 @@ CUSTOM_CSS = """
         padding: clamp(28px, 5vw, 64px);
         border-radius: 8px;
         background:
-            linear-gradient(90deg, rgba(23, 33, 29, .92), rgba(23, 33, 29, .52)),
-            url("data:image/jpeg;base64,__HERO_PLACEHOLDER__");
-        background-size: cover;
-        background-position: center;
-        color: white;
+            linear-gradient(90deg, rgba(248,245,238,.98) 0 43%, rgba(248,245,238,.78) 58%, rgba(248,245,238,.22) 100%),
+            url("data:image/__HERO_MIME__;base64,__HERO_PLACEHOLDER__");
+        background-size: cover, auto 108%;
+        background-position: center, center right;
+        background-repeat: no-repeat;
+        color: var(--ink);
         display: grid;
-        align-content: end;
+        align-content: center;
         box-shadow: 0 26px 80px rgba(23, 33, 29, .18);
     }
 
@@ -91,7 +94,7 @@ CUSTOM_CSS = """
 
     .hero p {
         max-width: 720px;
-        color: rgba(255,255,255,.82);
+        color: var(--muted);
         font-size: 18px;
         line-height: 1.85;
     }
@@ -105,7 +108,7 @@ CUSTOM_CSS = """
     }
 
     .hero .eyebrow {
-        color: var(--amber);
+        color: var(--clay);
     }
 
     .card {
@@ -321,25 +324,42 @@ CUSTOM_CSS = """
         animation: heroReveal 900ms ease-out both;
     }
 
+    .hero > * {
+        position: relative;
+        z-index: 2;
+    }
+
     .hero::before {
         content: "";
         position: absolute;
-        inset: -40%;
-        z-index: -1;
-        background:
-            radial-gradient(circle at 24% 30%, rgba(240,180,92,.28), transparent 28%),
-            radial-gradient(circle at 74% 62%, rgba(120,160,131,.22), transparent 30%);
+        right: 6%;
+        top: 10%;
+        width: 38%;
+        height: 72%;
+        z-index: 1;
+        border: 2px dashed rgba(120,160,131,.42);
+        border-radius: 52% 48% 58% 42% / 48% 56% 44% 52%;
+        transform: rotate(-4deg);
         animation: ambientDrift 9s ease-in-out infinite alternate;
+        pointer-events: none;
     }
 
     .hero::after {
         content: "";
         position: absolute;
-        inset: 0;
-        z-index: -1;
-        background: linear-gradient(110deg, transparent 0 34%, rgba(255,255,255,.18) 46%, transparent 58% 100%);
-        transform: translateX(-115%);
-        animation: heroSweep 5.8s ease-in-out infinite;
+        right: 2%;
+        bottom: 8%;
+        width: 30%;
+        height: 32%;
+        z-index: 1;
+        background:
+            radial-gradient(circle at 16% 32%, rgba(240,180,92,.46) 0 6px, transparent 7px),
+            radial-gradient(circle at 52% 58%, rgba(120,160,131,.36) 0 5px, transparent 6px),
+            radial-gradient(circle at 82% 28%, rgba(199,101,63,.22) 0 4px, transparent 5px);
+        border-bottom: 3px solid rgba(120,160,131,.28);
+        border-radius: 50%;
+        transform: rotate(-8deg);
+        pointer-events: none;
     }
 
     .hero h1 { animation: slideUp 760ms 120ms ease-out both; }
@@ -982,7 +1002,7 @@ CUSTOM_CSS = """
     .hero p {
         max-width: 680px;
         margin-top: var(--space-4);
-        color: rgba(255,255,255,.82);
+        color: var(--muted);
         font-size: 17px;
         line-height: 1.75;
     }
@@ -1269,8 +1289,11 @@ CUSTOM_CSS = """
         }
 
         .hero {
-            min-height: 500px;
-            padding: 32px;
+            min-height: 620px;
+            padding: 32px 28px 280px;
+            background-size: cover, auto 54%;
+            background-position: center, center bottom 18px;
+            align-content: start;
         }
 
         .hero h1 {
@@ -1321,8 +1344,13 @@ def image_data_uri(path: Path) -> str:
 
 
 def render_css() -> None:
-    hero_b64 = image_to_base64(APARTMENT_SINK_IMAGE if APARTMENT_SINK_IMAGE.exists() else PROPOSAL_IMAGE)
-    st.markdown(CUSTOM_CSS.replace("__HERO_PLACEHOLDER__", hero_b64), unsafe_allow_html=True)
+    hero_image = PRODUCT_ILLUSTRATION_IMAGE if PRODUCT_ILLUSTRATION_IMAGE.exists() else APARTMENT_SINK_IMAGE
+    hero_mime = "png" if hero_image.suffix.lower() == ".png" else "jpeg"
+    hero_b64 = image_to_base64(hero_image if hero_image.exists() else PROPOSAL_IMAGE)
+    st.markdown(
+        CUSTOM_CSS.replace("__HERO_PLACEHOLDER__", hero_b64).replace("__HERO_MIME__", hero_mime),
+        unsafe_allow_html=True,
+    )
 
 
 def section_label(text: str) -> None:
