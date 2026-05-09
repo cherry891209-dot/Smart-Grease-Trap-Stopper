@@ -2286,11 +2286,11 @@ def page_home() -> None:
         f"""
         <div class="hero">
             <div class="hero-text">
-                <div class="eyebrow">Startup World Cup Pitch</div>
+                <div class="eyebrow">Clario Living | Startup World Cup Applicant</div>
                 <h1>Clario Living</h1>
                 <div class="subtitle">Drain Protection for Rental Living</div>
                 <p>
-                    A replaceable sink stopper that captures grease during everyday rental-life moments, reducing odor and protecting old pipes from breakdowns.
+                    We design low-effort sink care products for student and young renters, starting with a replaceable grease-trap stopper that protects old pipes from odor, buildup, and repair anxiety.
                 </p>
             </div>
             <img class="hero-product" src="{image_data_uri(PRODUCT_ILLUSTRATION_IMAGE)}" alt="Clario Living hand-drawn product illustration">
@@ -2320,38 +2320,38 @@ def page_home() -> None:
     )
 
     st.write("")
-    section_label("Self Check")
+    section_label("Company Snapshot")
     left, right = st.columns([1.1, 1])
     with left:
-        st.header("Check Whether Your Sink Is High Risk")
+        st.header("A rental-living care company, starting at the sink")
         st.markdown(
             """
-            This site does more than show the product. The self-check turns greasy takeout, old pipes, odor, and repair cost into a visible risk score.
+            Clario Living turns overlooked maintenance problems into simple household products that renters can actually use. The first wedge is a no-install sink stopper that captures grease before it becomes a pipe problem.
             """
         )
         st.markdown(
             """
-            - Six quick questions to see whether your sink is already collecting grease
-            - Covers soup disposal, cleaning habits, and repair-cost tolerance
-            - Get low / medium / high risk feedback with practical next steps
+            - First product: Smart Grease-Trap Stopper
+            - Target users: student renters, old studios, and shared kitchens
+            - Business model: low-cost hardware, filter refills, and move-in bundles
             """
         )
         st.button(
-            "Start Self-Check",
+            "Open Rental Sink Self-Check",
             type="primary",
             on_click=start_checkup,
             use_container_width=True,
             key="start_checkup_button",
         )
-        st.info("Click to open the form and get an instant risk score with recommendations.", icon="⚡")
+        st.info("The self-check is a lightweight acquisition and education tool for renters.", icon="⚡")
 
     with right:
         st.markdown(
             """
             <div class="card">
-                <h3>Check Design</h3>
+                <h3>SWC Deck Structure</h3>
                 <p class="muted">
-                    Questions focus on oil disposal frequency, drainage speed, odor, building age, cleaning willingness, and repair-cost tolerance. Results map to low, medium, or high risk and connect back to product value.
+                    The navigation follows the required pitch-deck flow: problem, solution, product, business model, market, competition, growth, traction, financials, team, and funding status.
                 </p>
             </div>
             """,
@@ -2363,8 +2363,8 @@ def page_home() -> None:
         render_checkup_form()
 
     st.divider()
-    section_label("Pitch Map")
-    st.header("What Visitors See in the First 90 Seconds")
+    section_label("Pitch Deck Map")
+    st.header("Application-ready company story")
     cols = st.columns(4)
     with cols[0]:
         card("1", "Immediate Problem Resonance", "Use the self-check to bring visitors into the rental-sink context.")
@@ -2639,6 +2639,140 @@ def page_market() -> None:
     funnel_cols[4].metric("Refill", "filters", "low monthly cost", border=True)
 
 
+def page_business_model() -> None:
+    render_css()
+    section_label("Business Model")
+    st.title("Hardware Entry, Filter Refills, Move-In Bundles")
+    render_motion_visual("finance", "Low-cost hardware creates entry; refills and bundles create repeatable revenue.")
+
+    cols = st.columns(3)
+    with cols[0]:
+        card("01", "Affordable Hardware", "An NT$150 target price makes the product feel like drainage insurance, not a major appliance purchase.")
+    with cols[1]:
+        card("02", "Filter Refills", "Compostable grease-absorbing filters create a low-cost monthly maintenance loop.")
+    with cols[2]:
+        card("03", "Move-In Bundles", "The stopper can enter student rental starter kits alongside hangers, bins, and extension cords.")
+
+    st.divider()
+    section_label("Revenue Logic")
+    render_deep_table(
+        "How Clario Living makes money",
+        [
+            ("Initial device", "One-time stopper sale through campus-area retail and starter kits", "Low price lowers adoption friction."),
+            ("Filter refill", "Optional monthly or semester-based replacement pack", "Creates recurring revenue without forcing a high upfront price."),
+            ("Bundle channel", "Move-in kits, shared kitchens, and property managers", "Reaches users when they are already buying rental essentials."),
+            ("Future line", "Additional rental-living care products", "Expands Clario Living beyond one sink product."),
+        ],
+    )
+
+    st.divider()
+    section_label("Adoption Funnel")
+    st.header("From odor awareness to refill behavior")
+    funnel_cols = st.columns(5)
+    funnel_cols[0].metric("Reach", "Campus social", "short videos / starter kits", border=True)
+    funnel_cols[1].metric("Educate", "self-check", "quantified pain", border=True)
+    funnel_cols[2].metric("Convert", "NT$150", "low decision cost", border=True)
+    funnel_cols[3].metric("Retain", "visible capture", "cleaning reminder", border=True)
+    funnel_cols[4].metric("Repeat", "filters", "low monthly cost", border=True)
+
+
+def page_competition() -> None:
+    render_css()
+    section_label("Competition")
+    st.title("Alternatives Are Familiar, but They Miss Grease")
+    st.markdown(
+        "Most rental kitchens already use strainers or reactive cleaners. Clario Living wins by making invisible grease visible, removable, and low-effort."
+    )
+    render_competitor_matrix()
+
+    st.divider()
+    section_label("Positioning")
+    cols = st.columns(3)
+    with cols[0]:
+        card("Strainers", "Solid waste only", "Cheap and familiar, but oil still flows into old pipes.")
+    with cols[1]:
+        card("Chemicals", "Reactive fix", "Used after clogging, with odor, irritation, and pipe-risk concerns.")
+    with cols[2]:
+        card("Grease traps", "Too large", "Designed for commercial kitchens, not small rental sinks.")
+
+
+def page_growth_strategy() -> None:
+    render_css()
+    section_label("Growth Strategy")
+    st.title("Start Narrow, Expand Through Rental Living")
+    render_motion_visual("market", "Start with NTHU-area student renters, then expand to young renters and shared kitchens.")
+
+    render_roadmap()
+
+    st.divider()
+    section_label("Go-To-Market")
+    render_deep_table(
+        "Three-stage growth plan",
+        [
+            ("Campus validation", "NTHU-area student rentals, dorm shared kitchens, and small studios", "Start where the team understands the user and can collect fast feedback."),
+            ("Move-in kits", "Bundle with mattresses, hangers, extension cords, and trash bins", "Students are most willing to buy household essentials during move-in."),
+            ("Lifestyle retail", "Hardware stores, lifestyle retailers, and campus-area stationery shops", "The product is easy to understand and fits impulse low-price purchases."),
+            ("Rental care platform", "Add more low-effort maintenance products for renters", "Turns Clario Living into a broader rental-living brand."),
+        ],
+    )
+
+
+def page_current_traction() -> None:
+    render_css()
+    section_label("Current Traction")
+    st.title("Current Traction and Validation Assets")
+    st.markdown(
+        "At this application stage, Clario Living is pre-revenue and focused on validation. The company has a clear product concept, interactive mechanism demo, financial model, and pilot plan."
+    )
+
+    cols = st.columns(4)
+    cols[0].metric("Product concept", "Ready", "visual prototype", border=True)
+    cols[1].metric("Demo model", "Built", "interactive capture lab", border=True)
+    cols[2].metric("Pilot target", "20 sinks", "NTHU area", border=True)
+    cols[3].metric("Target price", "NT$150", "student-friendly", border=True)
+
+    st.divider()
+    section_label("Validation Pipeline")
+    render_deep_table(
+        "What will be measured next",
+        [
+            ("Fit rate", "Whether the stopper fits common rental drains", "Determines seal-ring design and first-batch usability."),
+            ("Actual grease capture", "Grease accumulated in the clear chamber each week", "Proves the product is more than psychological comfort."),
+            ("Cleaning completion", "Whether users empty the chamber on schedule", "Determines retention and refill behavior."),
+            ("Purchase intent", "Willingness to pay after a short trial", "Validates the NT$150 entry price."),
+        ],
+    )
+
+
+def page_funding_status() -> None:
+    render_css()
+    section_label("Current Funding Status")
+    st.title("Current Funding Status")
+    st.markdown(
+        "Clario Living is currently self-funded and seeking competition exposure, prototyping support, and pilot partners before raising outside capital."
+    )
+
+    cols = st.columns(3)
+    with cols[0]:
+        card("Stage", "Pre-seed / competition stage", "The team is preparing for prototype validation and first pilot data.")
+    with cols[1]:
+        card("Funding", "Self-funded", "No external funding has been raised yet.")
+    with cols[2]:
+        card("Use of funds", "Prototype and pilot", "Funds would support tooling, materials, campus trials, and refill tests.")
+
+    st.divider()
+    section_label("Funding Priorities")
+    render_deep_table(
+        "What capital would unlock",
+        [
+            ("Prototype refinement", "Improve seal-ring fit, chamber capacity, and cleaning feel", "Moves the product from concept to testable MVP."),
+            ("Pilot inventory", "Build 20-50 pilot units for student renters and shared kitchens", "Generates traction data for manufacturing decisions."),
+            ("User acquisition", "Campus demos, short videos, and move-in bundle partnerships", "Tests conversion before scaling."),
+            ("Filter validation", "Test refill materials, subscription behavior, and replacement cadence", "Validates recurring revenue assumptions."),
+        ],
+    )
+
+
 def page_team_pitch() -> None:
     render_css()
     section_label("Team")
@@ -2795,23 +2929,31 @@ sidebar_intro()
 
 pages = {
     "Clario Living": [
-        st.Page(page_home, title="Home and Self-Check", url_path="", default=True),
-        st.Page(page_problem, title="Problem", url_path="problem"),
-        st.Page(page_solution, title="Solution", url_path="solution"),
-        st.Page(page_product, title="Product and Technology", url_path="product"),
-        st.Page(page_demo_lab, title="Interactive Lab", url_path="demo-lab"),
-        st.Page(page_market, title="Market and Business Model", url_path="market"),
-        st.Page(page_financials, title="Financial Calculator", url_path="financials"),
-        st.Page(page_pilot_strategy, title="Pilot Strategy", url_path="pilot"),
-        st.Page(page_team_pitch, title="Team and Closing", url_path="team"),
+        st.Page(page_home, title="Company Overview", url_path="", default=True),
+        st.Page(page_problem, title="Problem Statement", url_path="problem"),
+        st.Page(page_solution, title="Proposed Solution", url_path="solution"),
+        st.Page(page_product, title="Product Details", url_path="product"),
+        st.Page(page_business_model, title="Business Model", url_path="business-model"),
+        st.Page(page_market, title="Market Opportunity", url_path="market"),
+        st.Page(page_competition, title="Competition", url_path="competition"),
+        st.Page(page_growth_strategy, title="Growth Strategy", url_path="growth"),
+        st.Page(page_current_traction, title="Current Traction", url_path="traction"),
+        st.Page(page_financials, title="Financials", url_path="financials"),
+        st.Page(page_team_pitch, title="Team", url_path="team"),
+        st.Page(page_funding_status, title="Current Funding Status", url_path="funding"),
         st.Page(page_problem, title="Problem", url_path="page_problem", visibility="hidden"),
         st.Page(page_solution, title="Solution", url_path="page_solution", visibility="hidden"),
         st.Page(page_product, title="Product and Technology", url_path="page_product", visibility="hidden"),
+        st.Page(page_business_model, title="Business Model", url_path="page_business_model", visibility="hidden"),
         st.Page(page_demo_lab, title="Interactive Lab", url_path="page_demo_lab", visibility="hidden"),
         st.Page(page_market, title="Market and Business Model", url_path="page_market", visibility="hidden"),
+        st.Page(page_competition, title="Competition", url_path="page_competition", visibility="hidden"),
+        st.Page(page_growth_strategy, title="Growth Strategy", url_path="page_growth", visibility="hidden"),
+        st.Page(page_current_traction, title="Current Traction", url_path="page_traction", visibility="hidden"),
         st.Page(page_financials, title="Financial Calculator", url_path="page_financials", visibility="hidden"),
         st.Page(page_pilot_strategy, title="Pilot Strategy", url_path="page_pilot_strategy", visibility="hidden"),
         st.Page(page_team_pitch, title="Team and Closing", url_path="page_team_pitch", visibility="hidden"),
+        st.Page(page_funding_status, title="Current Funding Status", url_path="page_funding", visibility="hidden"),
         st.Page(page_judge_room, title="Investor Q&A", url_path="page_judge_room", visibility="hidden"),
         st.Page(page_deck, title="Deck and Rules", url_path="page_deck", visibility="hidden"),
     ]
